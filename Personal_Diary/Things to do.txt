@@ -1,0 +1,21 @@
+learn ide 
+
+# learn git/ git-hub
+
+learn shell
+
+learn data structure and algorithm
+
+learn Continuous integration/continuous delivery
+
+automate whats app
+
+be less online social
+
+begone microsoft make your own software
+
+keep making small projects everyday
+
+make a desktop assistant
+
+
