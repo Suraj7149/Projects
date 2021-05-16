@@ -1,6 +1,6 @@
 learn ide 
 
-# learn git/ git-hub
+# (code with harry) learn git/ git-hub
 
 learn shell
 
