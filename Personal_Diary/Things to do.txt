@@ -8,7 +8,7 @@ learn data structure and algorithm
 
 learn Continuous integration/continuous delivery
 
-automate whats app
+learn android studio and java 
 
 be less online social
 
