@@ -1,0 +1,71 @@
+git config 
+	git config --global user.name
+	git config --global user.email
+
+git init
+	git init <repo-name>
+
+git clone
+	git clone <url>
+	git clone <url> [folder name]
+
+git add 
+	git add <file name>
+	git add -a
+	git add .
+
+git commit
+	git commit -m "message about commit"
+	git commit -a
+	
+git diff
+	git diff
+	git diff -staged
+	git diff <branch_1> <branch_2>
+
+git reset
+	git reset <file>
+	git reset <commit>
+	git reset -hard <commit>
+
+git status
+
+git rm <file>
+
+git log
+	git log
+	git log -follow <file>
+	git log -p 
+
+git show <commit>
+
+git tag <commitID>
+
+git branch
+	git branch <branch name>
+	git branch -d <branch name>
+	
+git chechout
+	git checkout <branch name>
+	git checkout -b <branch name>
+
+git merge 
+	git merge <branch name>
+
+git remote 
+	git remote add [var name][remote server link]
+
+git push
+	git push [var-name] master 
+	git push [var-name] <branch>
+	git push -all [var-name]
+	git push [var-name] : [branch name]
+
+git pull 
+	git pull [repo name]
+
+git stash
+	git stash save
+	git stash pop
+	git stash list
+	git stash drop
