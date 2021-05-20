@@ -1,12 +1,39 @@
-# include<stdio.h>
-# include<ctype.h>
+#include<stdio.h>
 
 int main(){
-    char str[]= "geek";
-    printf("Select an operation to perform: \n1. ADD\n2. SUBTRACT\n3. MULTIPLY\n4. DIVIDE.");
+    char oper;
+    double a, b;
 
-    printf("\nEnter:- ");
-    scanf("%s",&str);
-    printf(str);
+    printf("\nEnter the operator (+, /, *, -): ");
+    scanf("%c",&oper);
+
+    printf("\nEnter the two numbers:- ");
+    scanf("%lf %lf",&a,&b);
+
+    switch (oper)
+    {
+    case '+':
+        printf("\nresult: %.2lf",(a+b));
+        break;
     
+    case '-':
+        printf("\nresult: %.2lf",(a-b));
+        break;
+
+    case '*':
+        printf("\nresult: %.2lf",(a*b));
+        break;
+
+    case '/':
+        if (b != 0.0){
+            printf("\nresult: %.2lf",(a/b));
+        }else{
+            printf("\n%.2lf / %.2lf unidentified",a,b);
+        }
+        break;
+    default:
+        printf("\nWrong Operator.");
+        break;
+    }
+    return 0;
 }
