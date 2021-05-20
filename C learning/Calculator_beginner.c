@@ -7,7 +7,6 @@ int main(){
 
     printf("\nEnter:- ");
     scanf("%s",&str);
-    str = towlower(str);
     printf(str);
     
 }
