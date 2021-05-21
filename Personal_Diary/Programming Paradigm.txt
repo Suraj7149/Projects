@@ -1,0 +1,23 @@
+"A Good Programmer will write code that humans can understand."
+    - Martin Fowler
+
+The less complex means, easier it is to debug and understand.
+
+Programming paradigms is a way to reduce the complexity of the program.
+
+# # Introduction 
+    - The Term programming paradigms refers to the style/pattern of programming.
+    - Types of programming paradigms:-
+    1. Imperitive Programming paradigms
+    1.1. Procedural Programming paradigms
+    1.2. Object oriented programming
+    1.3. Paraller processing approach
+    
+    2. Declarative Programming paradigms
+    2.1. Logic programming paradigms
+    2.2. Functional Programming 
+    2.3. Database processing approach
+    
+
+1. Imperitive Programming paradigms:- 
+    - 
