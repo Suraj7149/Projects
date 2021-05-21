@@ -13,24 +13,24 @@ int main(){
     switch (oper)
     {
     case '+':
-        printf("\nresult: %.2lf",(a+b));
+        printf("\nresult: %.2lf\n",(a+b));
         break;
     
     case '-':
-        printf("\nresult: %.2lf",(a-b));
+        printf("\nresult: %.2lf\n",(a-b));
         break;
 
     case '*':
-        printf("\nresult: %.2lf",(a*b));
+        printf("\nresult: %.2lf\n",(a*b));
         break;
 
     case '/':
         if (b != 0.0){
-            printf("\nresult: %.2lf",(a/b));
+            printf("\nresult: %.2lf\n",(a/b));
         }else{
-            printf("\n%.2lf / %.2lf unidentified",a,b);
+            printf("\n%.2lf / %.2lf unidentified\n",a,b);
         }
-        break;
+        break; 
     default:
         printf("\nWrong Operator.");
         break;
