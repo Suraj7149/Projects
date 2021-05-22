@@ -11,7 +11,7 @@ Programming paradigms is a way to reduce the complexity of the program.
     1. Imperitive Programming paradigms
     1.1. Procedural Programming paradigms
     1.2. Object oriented programming
-    1.3. Paraller processing approach
+    1.3. Parallel processing approach
     
     2. Declarative Programming paradigms
     2.1. Logic programming paradigms
@@ -72,7 +72,197 @@ Programming paradigms is a way to reduce the complexity of the program.
 
         - None or only a few features are expected to be added to the project over time.
         
+
+        Advantages 
+        simple and easy to keep track of program flow
+        can be strongly modular or structured
+        needs less memory and effective and efficient
+
+
+    1.2. Object Oriented Programming paradigms:-
+        - its unique advantage like the modularity of the code and the ability 
+          to directly associate real-world business problem in the term of the code.
         
+        key features are Class, Abstraction, Encapsulation, Inheritance and Polymorphism.
+
+        A class is a template or a blueprint from which objects are created.
+        
+        objects are instances of classes. Objects have attributes/states and method/ behaviours.
+        attributes are data associated with the object while method are actions/ functions 
+        that the objects can perform.
+
+        Abstraction- seperates the interface from inplementation.
+        
+        Encapsulation- is the process of hiding the internal implementation of an object.
+        
+        Inheritance- enables heirarchical relationships to be represented and refined.
+
+        Polymorphism- allows objects of different types to receive the same message and respond
+        in different ways.
+
+        Example in Java:
+
+        public class Main
+        {
+	        public static void main(String[] args) {
+		        Addition obj = new Addition();
+		        obj.num = 10;
+		        int answer = obj.addValues();
+		        System.out.println("The sum is = "+answer); //prints-> The sum is 55
+	        }
+        }
+
+        class Addition {
+            int sum =0;
+            int num =0;
+            int addValues(){
+                for(int i=1; i<=num;i++){
+                    sum += i;
+                }   
+                return sum;
+            }
+        }
+
+        We have a class Addition that has two states, sum and num which are initialized to zero. 
+        We also have a method addValues() which returns the sum of num numbers.
+
+        In the Main class, we've created an object, obj of Addition class. Then, we've initialized 
+        the num to 10 and we've called addValues() method to get the sum.
+
+        Languages that support the object-oriented paradigm:
+
+            Python
+            Ruby
+            Java
+            C++
+            Smalltalk
+
+        is best to use when:- 
+        - you have multiple programmers who don't need to understand each components.
+        - lot of resuable and sharable code.
+        - project is anticipated to change often and be added to over-time
+
+        Advantages:- 
+        - resusable code through Inheritance
+        - Flexibility through Polymorphism
+        - high security with the use of data hiding(Encapsulation) and Abstraction mech.
+        - Improved software development productivity
+        - faster development
+        - lower cost of development
+        - higher-quality software
 
 
+    1.3. Parallel processing approach
+        Parallel processing is the processing of program instruction by dividing them among 
+        multiple processors.
+    
+        a parallel processing system allows many processors to run a program in 
+        less time by dividing them up.
 
+        supported by C, C++, NESL
+
+        this approach is best when:-
+        - system have more then one CPU or multi-core processors which are commonly found on 
+        computers today.
+        - need to solve some computational problem that takes  hours/days even with the benefit 
+        of a more powerful microprocessor.
+
+        - when data need real-time simlulation and modeling.
+
+        Advantages:-
+        speed up performace.
+        used in A.I.
+        makes is easier to solve problem since this approach seems to be like a divide and 
+        conquer method.
+
+
+# # 2. Declarative Programming paradigm
+    - is a style that expresses the logic of a computational without talking about its control 
+      flow.
+    - this approach focuses on what needs to be achieved instead of instructing how to achieve it.
+    
+    the main differences are that imperative tells you how to do something 
+    and declarative tells you what to do. 
+
+    2.1. Logic programming paradigm:-
+        - takes a declarative approach to problem-solving. It's based on formal logic.
+        - its is made up of facts and clauses. It uses everything is knows and tries to comes up
+        with the world where all of those facts and clauses are true.
+    
+        languages support:- Prolog, Absys, ALF, Alice, Ciao 
+
+        best to use when:- 
+        - planning to work on projects like theorem proving, expert systems, term writing,
+        type systems and automated planning.
+
+        Advantages:- 
+        easy to implement code
+        Debugging  is easy
+        can develop the programs quickly using logic programming.
+        can be applied in non-computational programs too.
+
+
+    2.2. Functional programming paradigm:- 
+        - this paradigm has its roots in mathematics and it is language independant
+        - key principle is the execution of a series of mathematics functions.
+
+        - You compose your program of short functions. All code is within a function. All variables 
+          are scoped to the function.
+
+        - the functions do not modify any values outside the scope of that function and the functions 
+          themselves are not affected by any values outside their scope.
+
+        Example:-
+        function isPrime(number){
+        for(let i=2; i<=Math.floor(Math.sqrt(number)); i++){
+            if(number % i == 0 ){
+            return false;
+            }
+        }
+        return true;
+        }
+        isPrime(15); //returns false
+
+        we've used Math.floor() and Math.sqrt() mathematical functions to solve our problem efficiently. 
+        We can solve this problem without using built-in JavaScript mathematical functions, but to run 
+        the code efficiently it is recommended to use built-in JS functions.
+
+        number is scoped to the function isPrime() and it will not be affected by any values outside its 
+        scope. isPrime() function always produces the same output when given the same input.
+
+        best to use when:-
+        - working with mathematical computations.
+        - working with applications aimed at concurrency or parallelism.
+
+        Advantages:- 
+        - functions can be coded quickly and easily.
+        - resuable hence rapid software development.
+        - unit testing is easier.
+        - Debugging is easier.
+        - less overall complexity.
+
+    2.3. Database processing approach:- 
+        - based on data and its movements. Program statements are defined by the data rather than hard-coding 
+          a series of steps.
+        - A database is an organized collection of structured information, or data, typically stored electronically 
+          in a computer system. A database is usually controlled by a database management system.
+
+        - To process the data and querying them, databases use tables. Data can then be easily accessed, managed, 
+          modified, updated, controlled and organized.
+
+        - A good database processing approach is crucial to any company or organization. This is because the database 
+          stores all the pertinent details about the company such as employee records, transaction records and salary 
+          details.
+
+        - Most databases use Structured Query Language (SQL) for writing and querying data.
+
+        best to use when:- 
+        - working with databases to structure them
+        - accessing, modifying, updating data on the database.
+        - communicating with servers.
+
+        Advantages:- 
+        - database are used to store large amount of data daily.
+        - accurate
+        - easy to update data
+        - data integrity
