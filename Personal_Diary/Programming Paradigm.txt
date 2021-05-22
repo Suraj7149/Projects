@@ -20,4 +20,59 @@ Programming paradigms is a way to reduce the complexity of the program.
     
 
 1. Imperitive Programming paradigms:- 
-    - 
+    - "Imperitive" comes from Latin "impero" meaning "i command".
+    - in this paradigms the order of the steps is crucial, because a given 
+      step will have different consequences depending on the current value of
+      variables when the steps are executed.
+    - Example:- 
+
+    # include<stdio.h>
+    
+    int main()
+    {
+        int sum = 0;
+        sum += 1;
+        sum += 1;
+        sum += 1;
+        sum += 1;
+        sum += 1;
+        sum += 1;
+        sum += 1;
+        sum += 1;
+        sum += 1;
+        sum += 1;
+        
+        printf("The sum is %d\n", sum);
+    
+        return 0;
+    }
+
+    /* in this we command computer what to do line by line. Finally, we are storing
+    the value and printing it. */
+
+    1.1. Procedural programming paradigm:-
+        - allows splitting those instruction into procedures.
+        
+        NOTE:- procedures are not function as it don't return a value but a function does.
+        
+        Function are designed to have minimal side effects, and always produce the same 
+        output when given the same input. 
+        Procedural on the other hand, don't have any return value. Their primary 
+        purpose is to accomplish a given task and cause a desired side effect.
+        
+        example of Procedural is loop.
+
+        # Procedural programming is Best choice when:-
+        - There is a complex operation which include dependencies btw operations
+        and when there is a need for clear visibility of the different application states
+
+        - The program is very unique and few elements were shared
+
+        - The program is static and not expected to change much over time
+
+        - None or only a few features are expected to be added to the project over time.
+        
+        
+
+
+
