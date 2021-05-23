@@ -239,7 +239,17 @@ Programming paradigms is a way to reduce the complexity of the program.
         Debugging  is easy
         can develop the programs quickly using logic programming.
         can be applied in non-computational programs too.
-
+      
+        Example
+        sum of two number in prolog:
+          predicates
+          sumoftwonumber(integer, integer)
+        clauses
+        sum(0, 0).
+            sum(n, r):-
+                n1=n-1,
+                sum(n1, r1),
+                r=r1+n 
 
     2.2. Functional programming paradigm:- 
         - this paradigm has its roots in mathematics and it is language independant
