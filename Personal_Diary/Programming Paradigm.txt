@@ -1,7 +1,15 @@
 "A Good Programmer will write code that humans can understand."
     - Martin Fowler
 
-The less complex means, easier it is to debug and understand.
+Paradigm can also be termed as method to solve some problem or do some task.
+it is also we can say it is a method to solve as problem using tools and techniques
+that are known to us following some approach.
+
+There are lots for programming language that are known but all of them need to 
+follow some strategy when they are implemented and this methodology/strategy is 
+paradigms. 
+
+The less complex program means, easier it is to debug and understand.
 
 Programming paradigms is a way to reduce the complexity of the program.
 
@@ -9,14 +17,14 @@ Programming paradigms is a way to reduce the complexity of the program.
     - The Term programming paradigms refers to the style/pattern of programming.
     - Types of programming paradigms:-
     1. Imperitive Programming paradigms
-    1.1. Procedural Programming paradigms
-    1.2. Object oriented programming
-    1.3. Parallel processing approach
+      1.1. Procedural Programming paradigms
+      1.2. Object oriented programming
+      1.3. Parallel processing approach
     
     2. Declarative Programming paradigms
-    2.1. Logic programming paradigms
-    2.2. Functional Programming 
-    2.3. Database processing approach
+      2.1. Logic programming paradigms
+      2.2. Functional Programming 
+      2.3. Database processing approach
     
 
 1. Imperitive Programming paradigms:- 
@@ -24,6 +32,18 @@ Programming paradigms is a way to reduce the complexity of the program.
     - in this paradigms the order of the steps is crucial, because a given 
       step will have different consequences depending on the current value of
       variables when the steps are executed.
+    - close relation to machine architecture.
+    - based on Von Neumann architecture.
+    
+    Advantages:-
+      very simple to implement
+      it contains loops, variables etc.
+
+    Disadvantages:- 
+      complex problem cannot be solved 
+      less efficient and less productivity
+      parallel programming is not possible
+
     - Example:- 
 
     # include<stdio.h>
@@ -52,6 +72,7 @@ Programming paradigms is a way to reduce the complexity of the program.
 
     1.1. Procedural programming paradigm:-
         - allows splitting those instruction into procedures.
+        - there is no difference btw Procedural and imperative approach.
         
         NOTE:- procedures are not function as it don't return a value but a function does.
         
@@ -61,6 +82,21 @@ Programming paradigms is a way to reduce the complexity of the program.
         purpose is to accomplish a given task and cause a desired side effect.
         
         example of Procedural is loop.
+
+        Example:- 
+        #include <iostream>
+        using namespace std;
+        int main()
+        {
+            int i, fact = 1, num;
+            cout << "Enter any Number: ";
+            cin >> number;
+            for (i = 1; i <= num; i++) {
+                fact = fact * i;
+            }
+            cout << "Factorial of " << num << " is: " << fact << endl;
+            return 0;
+        }
 
         # Procedural programming is Best choice when:-
         - There is a complex operation which include dependencies btw operations
@@ -82,7 +118,10 @@ Programming paradigms is a way to reduce the complexity of the program.
     1.2. Object Oriented Programming paradigms:-
         - its unique advantage like the modularity of the code and the ability 
           to directly associate real-world business problem in the term of the code.
-        
+        - The program is written as a collection of classes and object which are meant for 
+          communication. The smallest and basic entity is object and all kind of computation 
+          is performed on the objects only.
+
         key features are Class, Abstraction, Encapsulation, Inheritance and Polymorphism.
 
         A class is a template or a blueprint from which objects are created.
@@ -266,3 +305,28 @@ Programming paradigms is a way to reduce the complexity of the program.
         - accurate
         - easy to update data
         - data integrity
+
+
+
+C : developed by Dennis Ritchie and Ken Thompson
+C++ : developed by Bjarne Stroustrup
+Java : developed by James Gosling at Sun Microsystems
+ColdFusion : developed by J J Allaire
+Pascal : developed by Niklaus Wirth 
+Fortan : developed by John Backus for IBM
+Basic : developed by John G Kemeny and Thomas E Kurtz 
+Simula : first OOP language
+Java : developed by James Gosling at Sun Microsystems
+Objective-C : designed by Brad Cox
+Visual Basic .NET : developed by Microsoft
+Python : developed by Guido van Rossum
+Ruby : developed by Yukihiro Matsumoto 
+Smalltalk : developed by Alan Kay, Dan Ingalls, Adele Goldberg 
+
+Sources:- 
+https://www.freecodecamp.org/news/what-exactly-is-a-programming-paradigm/
+
+https://www.geeksforgeeks.org/introduction-of-programming-paradigms/
+
+https://hackr.io/blog/programming-paradigms
+
