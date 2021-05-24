@@ -7,6 +7,7 @@ int main(){
 
     printf("started.");
     scanf("%s", str);
+    
     if (strcmp(str, "hi") == 0){
         printf("it worked");
     }
