@@ -14,13 +14,14 @@ int main(){
             a++;
             break;
             
-        }else{
-            printf("%s\n",input);
+        }else if(strcmp(input, "say") == 0){
+            printf("Hello World!! \n");
             continue;
         }
-        
+        else{
+            printf("%s\n",input);
+            continue;
+        }  
     }
-
     return 0;
-
 }
