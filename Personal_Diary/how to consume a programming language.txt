@@ -1,0 +1,41 @@
+1. Basic history
+
+2. Tokens(keywords, identifiers, literals, operators, punctuators)
+
+3. barebones of a program
+
+4. variable and assignments
+# topic-vice practice 
+
+5. input and output
+
+6. data types (operators and in-built-functions)
+
+7. typecasting, experssions, operators
+
+8. statement flow control
+
+9. conditioning and loops and jump statements
+# topic wise practice
+
+10. function, recursion and sorting techniques
+# practice 
+
+11. libraries and OOPs
+# must make 3 libs and 3rd libs with oops
+
+12. file handling, standard input, output and errors streams.
+# make 2 project based on file handling and previous language
+
+13. data structure and algorithms
+
+14. gui and data visualization
+
+15. database and DBMS
+# practice
+
+16. web based application
+# create an website
+
+
+
