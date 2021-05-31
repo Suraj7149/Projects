@@ -1,6 +1,14 @@
 1. Basic history
 
 2. Tokens(keywords, identifiers, literals, operators, punctuators)
+    keywords- fixed words in language
+    identifiers- valid variable or names
+    literals:- 
+    -  int(decimal, hexadeciaml, octadecimal, types of integer)
+       float()
+       boolen
+       None
+    - string()
 
 3. barebones of a program
 
