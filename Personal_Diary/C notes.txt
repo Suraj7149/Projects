@@ -1,1 +1,25 @@
 https://www.codewithharry.com/videos/c-tutorial-in-hindi-with-notes
+
+history / introduction:-
+
+- porcedural programming language
+- dev. by Dennis Ritchie 1972
+- made to write OS.
+- low-level memory access, a simple set of keywords and a clean style.
+- C++ is a superset of C language.
+
+Structure of a C program:- 
+
+- the only Structure to write code is 
+
+
+#include<stdio.h>       // Header
+int main(){             // main()
+
+    int n = 0;          // variable declaration
+    printf("%d\n",n);   // body 
+    return 0;           // return
+}
+
+- Header:- 
+
