@@ -1,2 +1,8 @@
 *.exe
+venv
+.idea
+.vscode
+__pycache__
+misc.xml
+projects.iml
 
