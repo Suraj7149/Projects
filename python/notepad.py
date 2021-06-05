@@ -8,35 +8,14 @@ from tkinter.filedialog import *
 
 root = bg =  font = 0
 
-def run():
-    global root
-    root = Tk()
-    root.title("Notepad")
-    
-    file_menu_title = edit_menu_title = StringVar()
-    file_menu_title.set("File")
-    edit_menu_title.set("Edit")
-    
-    file_drop_menu = OptionMenu(root, file_menu_title, "Open", "New", "New window", "Save")
-    file_drop_menu.grid(row=0, column=0)
-
-    edit_drop_menu = OptionMenu(root, edit_menu_title, "Change font", "Change background", "Word Counter")
-    edit_drop_menu.grid(row=0, column=1)
-
-    Close = Button(root, text="Close", command=close())
-    Close.grid(padx=5, pady=5, row=0, column=2)
-
-    root.geometry("950x750")
-    root.mainloop()
-
 def open():
     pass 
 
 def create_new():
     pass
 
-def close(e):
-    exit()
+def close():
+    exit(0)
 
 def new_window():
     pass 
@@ -58,4 +37,35 @@ def word_warp():
     pass
 
 if "__main__" == __name__:
-    run()
+
+    root = Tk()
+    root.title("Notepad")
+    
+    menubar = Menu(root)
+    filemenu = Menu(menubar, tearoff=0)
+    filemenu.add_command(label="New")
+    filemenu.add_command(label="Open")
+    filemenu.add_command(label="Save")
+    filemenu.add_command(label="Save as...")
+
+    filemenu.add_separator()
+
+    filemenu.add_command(label="Exit", command=exit)
+    menubar.add_cascade(label="File", menu=filemenu)
+    editmenu = Menu(menubar, tearoff=0)
+    editmenu.add_command(label="Undo")
+
+    editmenu.add_separator()
+
+    editmenu.add_command(label="Cut")
+    editmenu.add_command(label="Copy")
+    editmenu.add_command(label="Paste")
+    editmenu.add_command(label="Delete")
+    editmenu.add_command(label="Select All")
+
+    menubar.add_cascade(label="Edit", menu=editmenu)
+    
+    
+    root.config(menu=menubar)
+    root.geometry("950x750")
+    root.mainloop()
