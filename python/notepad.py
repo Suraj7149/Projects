@@ -59,7 +59,6 @@ def bold():
 def italic():
     pass
 
-
 def run():
     global root
     global my_text
@@ -84,15 +83,15 @@ def run():
     # clear text button
     clear_button = Button(button_frame, text="Clear All", command=clear)
     # arranging
-    clear_button.grid(column=0)
+    clear_button.grid(row=0, column=0)
 
     # Save button
     get_text_button = Button(button_frame, text="Save", command=save_file)
-    get_text_button.grid(column=1, padx=10)
+    get_text_button.grid(row=0, column=1, padx=10)
 
     # quit button
     quit_button = Button(button_frame, text="Quit", command=root.destroy)
-    quit_button.grid(column=2, padx=10)
+    quit_button.grid(row=0, column=2, padx=10)
 
     root.resizable(0, 0)
     # looping to display the window
