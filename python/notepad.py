@@ -39,33 +39,44 @@ def word_warp():
 if "__main__" == __name__:
 
     root = Tk()
-    root.title("Notepad")
+    root.title("Untitled")
     
     menubar = Menu(root)
+
     filemenu = Menu(menubar, tearoff=0)
-    filemenu.add_command(label="New")
-    filemenu.add_command(label="Open")
-    filemenu.add_command(label="Save")
-    filemenu.add_command(label="Save as...")
-
-    filemenu.add_separator()
-
-    filemenu.add_command(label="Exit", command=exit)
-    menubar.add_cascade(label="File", menu=filemenu)
-    editmenu = Menu(menubar, tearoff=0)
-    editmenu.add_command(label="Undo")
-
-    editmenu.add_separator()
-
-    editmenu.add_command(label="Cut")
-    editmenu.add_command(label="Copy")
-    editmenu.add_command(label="Paste")
-    editmenu.add_command(label="Delete")
-    editmenu.add_command(label="Select All")
-
-    menubar.add_cascade(label="Edit", menu=editmenu)
+    filemenu.add_command(label="New", background="white")
+    filemenu.add_command(label="Open", background="white")
+    filemenu.add_command(label="New Window", background="white")
+    filemenu.add_command(label="Save", background="white")
+    filemenu.add_separator(background="white")
+    filemenu.add_command(label="Exit", command=exit, background="white") 
+    menubar.add_cascade(label="File", menu=filemenu, background="light blue")
     
+
+    editmenu = Menu(menubar, tearoff=2)
+    editmenu.add_command(label="Word wrap", background="white")
+    editmenu.add_command(label="Clear all", background="white")
+    editmenu.add_command(label="Select All", background="white")
+    editmenu.add_command(label="Help", background="white")
+    menubar.add_cascade(label="Edit", menu=editmenu, background="light blue")
+
+
+    viewmenu = Menu(menubar, tearoff=1)
+    viewmenu.add_command(label="Fullscreen", background="white")
+    viewmenu.add_command(label="Change Background", background="white")
+    viewmenu.add_command(label="Change Font", background="white")
+    menubar.add_cascade(label="View", menu=viewmenu, background="light blue")
     
-    root.config(menu=menubar)
-    root.geometry("950x750")
+    scrollbar = Scrollbar(root, bg="black", bd=4, width=16)
+    scrollbar.pack(side=RIGHT, fill=Y)
+
+    mylist = Listbox(root, yscrollcommand = scrollbar.set )
+    for     line in range(100):
+        mylist.insert(END, "This is line number " + str(line))
+
+    mylist.pack( side = LEFT, fill = BOTH )
+    scrollbar.config( command = mylist.yview )
+
+    root.config(menu=menubar, background="white")
+    root.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(), root.winfo_screenheight()))
     root.mainloop()
