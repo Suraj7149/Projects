@@ -1,82 +1,83 @@
-import tkinter 
-import os 
+# importing gui and time library for use
 from tkinter import *
-  
-from tkinter.messagebox import *
+import datetime
+import os
 
-from tkinter.filedialog import *
 
-root = bg =  font = 0
+try:
+    if os.path.exists("Notepad"):
+        pass
+    else:
+        os.mkdir("Notepad")
+except FileNotFoundError:
+    if os.path.exists("C:\\Notepad\\"):
+        pass
+    else:
+        os.mkdir("C:\\Notepad\\")
 
-def open():
-    pass 
+# creating a function to clear
+def clear():
+    # this statement will delete from start till end.
+    my_text.delete(1.0, END)
 
-def create_new():
-    pass
 
-def close():
-    exit(0)
+# func. to save the text before clearing or quitting
+def save_file():
+    if os.path.exists("C:\\Notepad\\") or os.path.exists("Notepad"):
+        file = open("Notepad/" + my_text.get(1.0, 1.5)+ ".txt", "w")
+        file.writelines(my_text.get(1.0, END))
+        file.close()
+        my_text.delete(1.0, END)
+    else:
 
-def new_window():
-    pass 
+        try:
+            if os.path.exists("Notepad\\"):
+                pass
+            else:
+                os.mkdir("Notepad\\")
+        except FileNotFoundError:
+            if os.path.exists("C:\\Notepad\\"):
+                pass
+            else:
+                os.mkdir("C:\\Notepad\\")
 
-def save():
-    pass 
 
-def change_bg():
-    global bg
-    bg = 1
-    pass
-
-def change_font():
-    global font
-    font = 1
-    pass
-
-def word_warp():
-    pass
-
-if "__main__" == __name__:
-
+def run():
+    global root
+    global my_text
+    # initializing window 
     root = Tk()
-    root.title("Untitled")
-    
-    menubar = Menu(root)
+    root.title("Personal Diary")
+    root.geometry("700x535")
 
-    filemenu = Menu(menubar, tearoff=0)
-    filemenu.add_command(label="New", background="white")
-    filemenu.add_command(label="Open", background="white")
-    filemenu.add_command(label="New Window", background="white")
-    filemenu.add_command(label="Save", background="white")
-    filemenu.add_separator(background="white")
-    filemenu.add_command(label="Exit", command=exit, background="white") 
-    menubar.add_cascade(label="File", menu=filemenu, background="light blue")
-    
+    # displaying year-month-date
+    Label(root, text="Today is:- " + str(datetime.date.today())).pack()
 
-    editmenu = Menu(menubar, tearoff=2)
-    editmenu.add_command(label="Word wrap", background="white")
-    editmenu.add_command(label="Clear all", background="white")
-    editmenu.add_command(label="Select All", background="white")
-    editmenu.add_command(label="Help", background="white")
-    menubar.add_cascade(label="Edit", menu=editmenu, background="light blue")
+    # generating text box
+    my_text = Text(root, width=60, height=20, font=("Ubuntu", 14))
+    my_text.pack(pady=20)
 
+    # frame for button as pack() and grid function don't work in one window
+    button_frame = Frame(root)
+    button_frame.pack()
 
-    viewmenu = Menu(menubar, tearoff=1)
-    viewmenu.add_command(label="Fullscreen", background="white")
-    viewmenu.add_command(label="Change Background", background="white")
-    viewmenu.add_command(label="Change Font", background="white")
-    menubar.add_cascade(label="View", menu=viewmenu, background="light blue")
-    
-    scrollbar = Scrollbar(root, bg="black", bd=4, width=16)
-    scrollbar.pack(side=RIGHT, fill=Y)
+    # clear text button
+    clear_button = Button(button_frame, text="Clear All", command=clear)
+    # arranging
+    clear_button.grid(row=0, column=0)
 
-    mylist = Listbox(root, yscrollcommand = scrollbar.set )
-    for     line in range(100):
-        mylist.insert(END, "This is line number " + str(line))
+    # Save button
+    get_text_button = Button(button_frame, text="Save", command=save_file)
+    get_text_button.grid(row=0, column=1, padx=10)
 
-    mylist.pack( side = LEFT, fill = BOTH )
-    scrollbar.config( command = mylist.yview )
+    # quit button
+    quit_button = Button(button_frame, text="Quit", command=root.destroy)
+    quit_button.grid(row=0, column=2, padx=10)
 
-    root.config(menu=menubar, background="white")
-    root.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(), root.winfo_screenheight()))
+    root.resizable(0, 0)
+    # looping to display the window
     root.mainloop()
+
+
+if __name__ == "__main__":
+    run()
