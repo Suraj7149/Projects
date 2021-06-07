@@ -13,6 +13,13 @@ root = Tk()
 root.geometry(f"{w}x{h}")
 root.title("Notepad")
 
+def full():
+    w = root.winfo_screenwidth
+    h = root.winfo_screenheight
+
+    root.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(), root.winfo_screenheight()))
+
+
 def new_file():
     my_text.delete("1.0", END)
     root.title("New File - Notepad!")
@@ -38,7 +45,7 @@ def open_file():
         else:
             string1 = string1+(path[-i])
             continue
-    root.title(string1[::-1])
+    root.title(string1[::-1]+"(Read-Only-Mode)")
 
     my_text.insert('1.0', f.readlines())
     f.close()
@@ -63,7 +70,7 @@ file.add_command(label="Exit", command=root.destroy)
 edit = Menu(menubar, tearoff=0, fg ="white", bg="black", font=Button_font)
 edit.add_command(label="change Font")
 edit.add_command(label="Change Background")
-edit.add_command(label="Fullscreen")
+edit.add_command(label="Fullscreen", command=full)
 edit.add_command(label="Bold")
 edit.add_command(label="Italic")
 edit.add_separator()
