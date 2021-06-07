@@ -3,6 +3,7 @@ from tkinter import *
 import datetime
 import os
 from tkinter.font import Font
+from tkinter import filedialog as fd
 
 
 try:
@@ -25,7 +26,7 @@ def clear():
 # func. to save the text before clearing or quitting
 def save_file():
     if os.path.exists("C:\\Notepad\\") or os.path.exists("Notepad"):
-        file = open("Notepad/" + str(datetime.date.today())+ ".txt", "w")
+        file = open("Notepad/" + my_text.get(1.5)+ ".txt", "w")
         file.writelines(my_text.get(1.0, END))
         file.close()
         my_text.delete(1.0, END)
@@ -44,7 +45,15 @@ def save_file():
 
 
 def open_file():
-    pass
+    # file type
+    filetypes = (
+        ('text files', '*.txt'),
+        ('All files', '*.*')
+    )
+    # show the open file dialog
+    f = fd.askopenfile(filetypes=filetypes)
+    # read the text file and show its content on the Text
+    my_text.insert('1.0', f.readlines())
 
 
 def change_bg():
@@ -55,37 +64,71 @@ def change_font():
     pass 
 
 def bold():
-    pass
+    global BO_LD
+    New_text_font = Font(family="Times New Roman", size=14, weight='bold')
+    BO_LD = True
+    text_font = New_text_font
+
+
 
 def italic():
-    pass
+    global ITALIC
+    if bold:
+        text_font = Font(family="Times New Roman", size=14, weight="bold", slant="italic")
+    else:
+        text_font = Font(family="Times New Roman", size=14, slant="italic")
+    ITALIC = True
+    return text_font
+
+
+def reset():
+    BO_LD = ITALIC = False
+    text_font = Font(family="Times New Roman", size=14)
+    return text_font
+
 
 def fullscreen():
     
-    print(root.winfo_screenwidth(), root.winfo_screenheight())
+    width = root.winfo_screenwidth()
+    height = root.winfo_screenheight()
+
+    
 
 
 def run():
     global root
     global my_text
+    global Button_font
+    global text_font
     
 
     # initializing window 
     root = Tk()
-    root.title("Personal Diary")
+    root.title("Untiled.txt")
     root.geometry("700x500")
     
-    menubar = Menu(root)
-    file = Menu(menubar, tearoff=0)
+    
+    
+    text_font = Font(family="Times New Roman", size=14)
+    Button_font = Font(family="Ubuntu", size=12, slant="italic", weight="bold")
+    
+    # Label(root, text="Today is:- " + str(datetime.date.today()), font=text_font).pack(padx=5, side=TOP)
+
+    # generating text box
+    my_text = Text(root, font=text_font, fg="white", bg="black")
+    my_text.pack()
+    
+    menubar = Menu(root, fg ="white", bg="black", font=Button_font)
+    file = Menu(menubar, tearoff=0, fg ="white", bg="black", font=Button_font)
     file.add_command(label="Save", command=save_file)
     file.add_command(label="Save as..")
-    file.add_command(label="Open")
+    file.add_command(label="Open", command=open_file)
     file.add_command(label="Recent..")
     file.add_command(label="Close", command=clear)
     file.add_separator()
     file.add_command(label="Exit", command=root.destroy)
 
-    edit = Menu(menubar, tearoff=0)
+    edit = Menu(menubar, tearoff=0, fg ="white", bg="black", font=Button_font)
     edit.add_command(label="change Font", command=change_font)
     edit.add_command(label="Change Background", command=change_bg)
     edit.add_command(label="Fullscreen", command=fullscreen)
@@ -94,16 +137,6 @@ def run():
 
     menubar.add_cascade(label="File", menu=file)
     menubar.add_cascade(label="Edit", menu=edit)
-    
-    text_font = Font(family="Times New Roman", size=14, slant="italic")
-    Button_font = Font(family="Ubuntu", size=10, slant="italic", weight="bold")
-    
-    # Label(root, text="Today is:- " + str(datetime.date.today()), font=text_font).pack(padx=5, side=TOP)
-
-    # generating text box
-    my_text = Text(root, font=text_font)
-    my_text.pack()
-    
     root.config(menu=menubar)
     # root.resizable(0, 0)
     # looping to display the window
