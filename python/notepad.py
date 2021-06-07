@@ -1,8 +1,11 @@
-from notepad import open_file
+from os import path
+
+from easygui.boxes.fileopen_box import fileopenbox
 from tkinter import * 
 from tkinter import filedialog
 from tkinter import font
 from tkinter.font import Font
+import easygui
 
 w = 800
 h = 600
@@ -23,11 +26,22 @@ def open_file():
         
     )
     # show the open file dialog
-    f = filedialog.askopenfile(initialdir="/home/suraj/Desktop", title="Open files", filetypes=filetypes)
+    path = easygui.fileopenbox()
     # read the text file and show its content on the Text
-    name = f
-    status_bar.config(text=name)
+    f = open(path, "r")
+    status_bar.config(text=path)
+    
+    string1 = " " 
+    for i in range(1, len(path)):
+        if path[-i] == "/":
+            break
+        else:
+            string1 = string1+(path[-i])
+            continue
+    root.title(string1[::-1])
+
     my_text.insert('1.0', f.readlines())
+    f.close()
 
 text_font = Font(family="Times New Roman", size=14, slant="italic")
 Button_font = Font(family="Ubuntu", size=12, weight="bold")
