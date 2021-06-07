@@ -2,6 +2,7 @@
 from tkinter import *
 import datetime
 import os
+from tkinter.font import Font
 
 
 try:
@@ -67,31 +68,32 @@ def run():
     # initializing window 
     root = Tk()
     root.title("Personal Diary")
-    root.geometry("900x550")
+    root.minsize(height=500, width=500)
 
-    # displaying year-month-date
-    Label(root, text="Today is:- " + str(datetime.date.today())).pack()
+    text_font = Font(family="Times New Roman", size=14, slant="italic")
+    Button_font = Font(family="Ubuntu", size=10, slant="italic", weight="bold")
 
     # generating text box
-    my_text = Text(root, width=80, height=20, font=("Ubuntu", 14))
+    my_text = Text(root, width=80, height=20, font=text_font)
     my_text.pack(pady=10, padx=15)
+    
+    # displaying year-month-date
+    Label(root, text="Today is:- " + str(datetime.date.today()), font=text_font).pack(padx=5, pady=5, side=RIGHT)
 
-    # frame for button as pack() and grid function don't work in one window
-    button_frame = Frame(root)
-    button_frame.pack()
+    clear_button = Button(root, text="Delete", font=Button_font, command=clear)
+    open_button = Button(root, text="Open",font=Button_font,  command=open_file())
+    get_text_button = Button(root, text="Save",font=Button_font,  command=save_file)
+    change_bg_button = Button(root, text="Edit",font=Button_font,  command=change_bg())
+    quit_button = Button(root, text="Quit",font=Button_font,  command=root.destroy)
+    change_font_button = Button(root, text="Fullscreen",font=Button_font,  command=change_font())
 
-    # clear text button
-    clear_button = Button(button_frame, text="Clear All", command=clear)
-    # arranging
-    clear_button.grid(row=0, column=0)
 
-    # Save button
-    get_text_button = Button(button_frame, text="Save", command=save_file)
-    get_text_button.grid(row=0, column=1, padx=10)
-
-    # quit button
-    quit_button = Button(button_frame, text="Quit", command=root.destroy)
-    quit_button.grid(row=0, column=2, padx=10)
+    get_text_button.pack(padx=10, pady=3, side=LEFT, anchor=SE)
+    open_button.pack(padx=10, pady=3, side=LEFT, anchor=SE)
+    quit_button.pack(padx=10, pady=3, side=LEFT, anchor=SE)
+    change_bg_button.pack(padx=10, pady=3, side=LEFT, anchor=SE)
+    change_font_button.pack(padx=10, pady=3, side=LEFT, anchor=SE)
+    clear_button.pack(padx=10, pady=3, side=LEFT, anchor=SE)
 
     root.resizable(0, 0)
     # looping to display the window
