@@ -60,6 +60,11 @@ def bold():
 def italic():
     pass
 
+def fullscreen():
+    
+    print(root.winfo_screenwidth(), root.winfo_screenheight())
+
+
 def run():
     global root
     global my_text
@@ -68,34 +73,39 @@ def run():
     # initializing window 
     root = Tk()
     root.title("Personal Diary")
-    root.minsize(height=500, width=500)
+    root.geometry("700x500")
+    
+    menubar = Menu(root)
+    file = Menu(menubar, tearoff=0)
+    file.add_command(label="Save", command=save_file)
+    file.add_command(label="Save as..")
+    file.add_command(label="Open")
+    file.add_command(label="Recent..")
+    file.add_command(label="Close", command=clear)
+    file.add_separator()
+    file.add_command(label="Exit", command=root.destroy)
 
+    edit = Menu(menubar, tearoff=0)
+    edit.add_command(label="change Font", command=change_font)
+    edit.add_command(label="Change Background", command=change_bg)
+    edit.add_command(label="Fullscreen", command=fullscreen)
+    edit.add_command(label="Bold", command=bold)
+    edit.add_command(label="Italic", command=italic)
+
+    menubar.add_cascade(label="File", menu=file)
+    menubar.add_cascade(label="Edit", menu=edit)
+    
     text_font = Font(family="Times New Roman", size=14, slant="italic")
     Button_font = Font(family="Ubuntu", size=10, slant="italic", weight="bold")
+    
+    # Label(root, text="Today is:- " + str(datetime.date.today()), font=text_font).pack(padx=5, side=TOP)
 
     # generating text box
-    my_text = Text(root, width=80, height=20, font=text_font)
-    my_text.pack(pady=10, padx=15)
+    my_text = Text(root, font=text_font)
+    my_text.pack()
     
-    # displaying year-month-date
-    Label(root, text="Today is:- " + str(datetime.date.today()), font=text_font).pack(padx=5, pady=5, side=RIGHT)
-
-    clear_button = Button(root, text="Delete", font=Button_font, command=clear)
-    open_button = Button(root, text="Open",font=Button_font,  command=open_file())
-    get_text_button = Button(root, text="Save",font=Button_font,  command=save_file)
-    change_bg_button = Button(root, text="Edit",font=Button_font,  command=change_bg())
-    quit_button = Button(root, text="Quit",font=Button_font,  command=root.destroy)
-    change_font_button = Button(root, text="Fullscreen",font=Button_font,  command=change_font())
-
-
-    get_text_button.pack(padx=10, pady=3, side=LEFT, anchor=SE)
-    open_button.pack(padx=10, pady=3, side=LEFT, anchor=SE)
-    quit_button.pack(padx=10, pady=3, side=LEFT, anchor=SE)
-    change_bg_button.pack(padx=10, pady=3, side=LEFT, anchor=SE)
-    change_font_button.pack(padx=10, pady=3, side=LEFT, anchor=SE)
-    clear_button.pack(padx=10, pady=3, side=LEFT, anchor=SE)
-
-    root.resizable(0, 0)
+    root.config(menu=menubar)
+    # root.resizable(0, 0)
     # looping to display the window
     root.mainloop()
 
