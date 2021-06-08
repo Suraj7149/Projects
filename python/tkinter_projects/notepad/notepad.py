@@ -241,7 +241,6 @@ file.add_command(label="New", command=lambda: new_file(1), accelerator="Ctrl + n
 file.add_command(label="Save", command=lambda: save(1), accelerator="Ctrl + s")   
 file.add_command(label="Save as..", command=lambda: save_file(1), accelerator="Ctrl + Shift + s")
 file.add_command(label="Open", command=lambda: open_file(1), accelerator="Ctrl + o")
-file.add_command(label="Recent..")
 file.add_command(label="Clear All", command=clear, accelerator="Ctrl + Shift + D")
 file.add_separator()
 file.add_command(label="Exit", command=root.destroy, accelerator="Alt + F4")
