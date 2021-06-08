@@ -1,4 +1,5 @@
-git config 
+git config
+
 	git config --global user.name
 	git config --global user.email
 
@@ -69,3 +70,4 @@ git stash
 	git stash pop
 	git stash list
 	git stash drop
+

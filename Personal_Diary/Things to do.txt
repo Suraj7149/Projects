@@ -1,5 +1,7 @@
 learn ide 
 
+learn framework and gui
+
 # (code with harry) learn git/ git-hub
 
 learn shell
@@ -19,3 +21,4 @@ keep making small projects everyday
 make a desktop assistant
 
 learn programing paradigm
+
