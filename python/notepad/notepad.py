@@ -122,7 +122,7 @@ text_scroll = Scrollbar(my_frame, width=13, bg="White")
 text_scroll.pack(side=RIGHT, fill=Y)
 
 
-my_text = Text(my_frame, width=w, height=h, font=text_font, fg="white", bg="black", selectbackground="orange", undo=True, yscrollcommand=text_scroll.set)
+my_text = Text(my_frame, width=w, height=h, font=text_font, fg="black", bg="grey", selectbackground="orange", undo=True, yscrollcommand=text_scroll.set)
 my_text.pack(side=LEFT, fill="both")
 
 
