@@ -4,6 +4,8 @@ from tkinter import font
 from tkinter.font import Font
 from typing import ItemsView
 import easygui
+from tkinter import colorchooser
+from datetime import date
 
 w = 800
 h = 600
@@ -11,6 +13,8 @@ filetype = (
     ("Text Files", "*.txt"),
     ("All Files", "*.*")
 )
+
+day = "Today's Date:- "+str(date.today())
 global file_path
 file_path = None
 global selected
@@ -18,6 +22,7 @@ selected = None
 root = Tk()
 root.geometry(f"{w}x{h}")
 root.title("Notepad")
+
 
 def get_name(name):
     string1 = ''
@@ -31,13 +36,13 @@ def get_name(name):
     return string1[::-1]
 
 
-def  save_file():
+def  save_file(input):
     text_file = filedialog.asksaveasfilename(defaultextension=".*", initialdir="home/suraj/Desktop/Projects/", filetypes=filetype)
     if text_file:
         file_path = text_file
         name = text_file
         name = get_name(text_file)
-        status_bar.config(text=f'Saved: {text_file}')
+        status_bar.config(text=f'Saved: {text_file}\t\t'+str(day))
         root.title(f'{name}')
 
         text_file = open(text_file, "w")
@@ -45,7 +50,7 @@ def  save_file():
         text_file.close()
 
 
-def save():
+def save(input):
     global file_path
     if file_path:
         text_file = open(file_path, "w")
@@ -54,31 +59,31 @@ def save():
         root.title(get_name(file_path))
         status_bar.config(text=f'Saved: {file_path}')
     else:
-        save_file()
+        save_file(1)
 
 
-
-def full():
+def full(e):
     w = root.winfo_screenwidth
     h = root.winfo_screenheight
 
     root.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(), root.winfo_screenheight()))
 
 
-def default_view():
+def default_view(e):
     w = 800
     h = 600
     root.geometry(f"{w}x{h}")
 
 
-def new_file():
+def new_file(input):
+    global file_path
     my_text.delete("1.0", END)
     root.title("New File - Notepad!")
-    status_bar.config(text="New File - Unsaved     ")
+    status_bar.config(text="New File - Unsaved     \t\t"+str(day))
     file_path = False
 
 
-def open_file():
+def open_file(input):
     global file_path
 
     my_text.delete("1.0", END)
@@ -88,7 +93,7 @@ def open_file():
 
     # read the text file and show its content on the Text
     f = open(file_path, "r")
-    status_bar.config(text=file_path)
+    status_bar.config(text=file_path+'\t\t'+str(day))
     root.title(get_name(file_path)+"(Read-Only-Mode)")
 
     my_text.insert('1.0', f.read())
@@ -105,6 +110,51 @@ def cut_fun(e):
             my_text.delete("sel.first", "sel.last")
     
 
+def bold_text(e):
+    bold_font = font.Font(my_text, my_text.cget("font"))
+    bold_font.config(weight="bold")
+
+    my_text.tag_configure("bold", font=bold_font)
+
+    current_tags = my_text.tag_names("sel.first")
+
+    if "bold" in current_tags:
+        my_text.tag_remove("bold", "sel.first", "sel.last")
+
+    else:
+        my_text.tag_add("bold", "sel.first", "sel.last")
+
+
+def italic_text(e):
+    italic_font = font.Font(my_text, my_text.cget("font"))
+    italic_font.config(slant="italic")
+    
+    my_text.tag_configure("italic", font = italic_font)
+
+    current_tags = my_text.tag_names("sel.first")
+
+    if "italic" in current_tags:
+        my_text.tag_remove("italic", "sel.first", "sel.last")
+
+    else:
+        my_text.tag_add("italic", "sel.first", "sel.last")
+
+
+def bold_italic_text(e):
+    bold_italic_font = font.Font(my_text, my_text.cget("font"))
+    bold_italic_font.config(weight="bold", slant="italic")
+    my_text.tag_configure("bold_italic", font=bold_italic_font)
+
+    current_tags = my_text.tag_names("sel.first")
+
+    if "bold_italic" in current_tags:
+        my_text.tag_remove("bold_italic", "sel.first", "sel.last")
+
+    else:
+        if "bold" or "italic" in current_tags:
+            my_text.tag_remove("bold", "sel.first", "sel.last")
+            my_text.tag_remove("italic", "sel.first", "sel.last")
+        my_text.tag_add("bold_italic", "sel.first", "sel.last")
 
 
 def paste_fun(e):
@@ -129,50 +179,46 @@ def copy_fun(e):
         root.clipboard_clear()
         root.clipboard_append(selected)
 
+
 def clear():
     my_text.delete(1.0, END)
 
 
+def select_all(e):
+    my_text.tag_add("sel", 1.0, END)
 
 
-text_font = Font(family="Times New Roman", size=14, slant="italic")
+def change_bg():
+    my_color = colorchooser.askcolor()[1]
+    if my_color:
+        my_text.config(bg=my_color)
+    
+
+def all_text_color():
+    my_color = colorchooser.askcolor()[1]
+    if my_color:
+        my_text.config(fg=my_color)
+    
+
+def change_font():
+    my_color = colorchooser.askcolor()[1]
+    color_font = font.Font(my_text, my_text.cget("font"))
+    if my_color:
+        my_text.tag_configure("colored", font = color_font, foreground=my_color)
+        current_tags = my_text.tag_names("sel.first")
+
+        if "colored" in current_tags:
+            my_text.tag_remove("colored", "sel.first", "sel.last")
+
+        else:
+            my_text.tag_add("colored", "sel.first", "sel.last")
+    
+
+text_font = Font(family="Times New Roman", size=14)
 Button_font = Font(family="Ubuntu", size=12, weight="bold")
 
-status_bar = Label(root, text="Ready    ", font=Button_font, anchor=E)
-status_bar.pack(fill=X,side=BOTTOM,)
-
-
-menubar = Menu(root, fg ="white", bg="black", font=Button_font)
-file = Menu(menubar, tearoff=0, fg ="white", bg="black", font=Button_font)
-file.add_command(label="New", command=new_file)  
-file.add_command(label="Save", command=save)   
-file.add_command(label="Save as..", command=save_file)
-file.add_command(label="Open", command=open_file)
-file.add_command(label="Recent..")
-file.add_command(label="Clear All", command=clear)
-file.add_separator()
-file.add_command(label="Exit", command=root.destroy)
-edit = Menu(menubar, tearoff=0, fg ="white", bg="black", font=Button_font)
-edit.add_command(label="Cut", command=lambda: cut_fun(False))
-edit.add_command(label="Copy", command=lambda: copy_fun(False))
-edit.add_command(label="Paste", command=lambda: paste_fun(False))
-edit.add_separator()
-edit.add_command(label="Undo")
-edit.add_command(label="Redo")
-view = Menu(menubar, tearoff=0, fg ="white", bg="black", font=Button_font)
-view.add_command(label="change Font")
-view.add_command(label="Change Background")
-view.add_command(label="Fullscreen", command=full)
-view.add_command(label="Bold")
-view.add_command(label="Italic")
-view.add_separator()
-view.add_command(label="Default", command=default_view)
-
-
-menubar.add_cascade(label="File", menu=file)
-menubar.add_cascade(label="Edit", menu=edit)
-menubar.add_cascade(label="View", menu=view)
-
+status_bar = Label(root, text="Ready    "+'\t\t'+str(day), font=Button_font, anchor=E)
+status_bar.pack(fill=X,side=BOTTOM)
 
 my_frame = Frame(root)
 my_frame.pack(side=LEFT, fill="both")
@@ -181,18 +227,63 @@ my_frame.pack(side=LEFT, fill="both")
 text_scroll = Scrollbar(my_frame, width=13, bg="White")
 text_scroll.pack(side=RIGHT, fill=Y)
 
+Hori_text_scroll = Scrollbar(my_frame, orient="horizontal")
+Hori_text_scroll.pack(side=BOTTOM, fill=X)
 
-my_text = Text(my_frame, width=w, height=h, font=text_font, fg="black", bg="grey", selectbackground="white", undo=True, yscrollcommand=text_scroll.set)
+my_text = Text(my_frame, width=w, height=h, font=text_font, fg="black", bg="grey", 
+            selectbackground="white", undo=True, yscrollcommand=text_scroll.set,
+            wrap="none", xscrollcommand=Hori_text_scroll.set)
 my_text.pack(side=LEFT, fill="both")
+
+menubar = Menu(root, fg ="white", bg="black", font=Button_font)
+file = Menu(menubar, tearoff=0, fg ="white", bg="black", font=Button_font)
+file.add_command(label="New", command=lambda: new_file(1), accelerator="Ctrl + n")  
+file.add_command(label="Save", command=lambda: save(1), accelerator="Ctrl + s")   
+file.add_command(label="Save as..", command=lambda: save_file(1), accelerator="Ctrl + Shift + s")
+file.add_command(label="Open", command=lambda: open_file(1), accelerator="Ctrl + o")
+file.add_command(label="Recent..")
+file.add_command(label="Clear All", command=clear, accelerator="Ctrl + Shift + D")
+file.add_separator()
+file.add_command(label="Exit", command=root.destroy, accelerator="Alt + F4")
+edit = Menu(menubar, tearoff=0, fg ="white", bg="black", font=Button_font)
+edit.add_command(label="Cut", command=lambda: cut_fun(False), accelerator="Ctrl + x")
+edit.add_command(label="Copy", command=lambda: copy_fun(False), accelerator="Ctrl + c")
+edit.add_command(label="Paste", command=lambda: paste_fun(False), accelerator="Ctrl + v")
+edit.add_separator()
+edit.add_command(label="Undo", command=my_text.edit_undo, accelerator="Ctrl + z")
+edit.add_command(label="Redo", command=my_text.edit_undo, accelerator="Ctrl + y")
+view = Menu(menubar, tearoff=0, fg ="white", bg="black", font=Button_font)
+view.add_command(label="Highlighter", command=change_font)
+view.add_command(label="change Font", command=all_text_color)
+view.add_command(label="Change Background", command=change_bg)
+view.add_command(label="Fullscreen", command=lambda: full(1), accelerator="F11")
+view.add_command(label="Bold", command=lambda: bold_text(1), accelerator="Ctrl + b")
+view.add_command(label="Italic", command=lambda: italic_text(1), accelerator="Ctrl + i")
+view.add_command(label="Bold-Italic", command=lambda: bold_italic_text(1), accelerator="Ctrl + i + b")
+view.add_separator()
+view.add_command(label="Default", command=lambda: default_view(1), accelerator="Esc")
+
+
+menubar.add_cascade(label="File", menu=file)
+menubar.add_cascade(label="Edit", menu=edit)
+menubar.add_cascade(label="View", menu=view)
+
 
 root.bind("<Control-Key-x>", cut_fun)
 root.bind("<Control-Key-c>", copy_fun)
 root.bind("<Control-Key-y>", paste_fun)
 root.bind("<Control-Key-o>", open_file)
 root.bind("<Control-Key-n>", new_file)
-
+root.bind("<Control-Key-s>", save)
+root.bind("<Control-Key-S>", save_file)
+root.bind("<F11>", full)
+root.bind("<Escape>", default_view)
+root.bind("<Control-Key-b>", bold_text)
+root.bind("<Control-Key-i>", italic_text)
+root.bind("<Control-Key-a>", select_all)
 
 text_scroll.config(command=my_text.yview)
+Hori_text_scroll.config(command=my_text.xview)
 root.config(menu=menubar)
 # root.resizable(0,0)
 root.mainloop()
