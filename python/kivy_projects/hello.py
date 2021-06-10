@@ -40,6 +40,7 @@ class MyGridLayout(GridLayout):
         self.add_widget(self.top_grid)
 
         self.submit = Button(text="Submit")
+        self.submit.background_color = (0,2,2,.5)
         self.submit.bind(on_press=self.press)
         self.add_widget(self.submit)
 
