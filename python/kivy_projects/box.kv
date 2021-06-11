@@ -1,81 +1,42 @@
-<Button>
-    font_size: 32
-    background_color: utils.get_color_from_hex("#7289da")
-    background_normal: ""
-
-<TextInput>
-    multiline:False
-    background_color: utils.get_color_from_hex("#7c92e3")
-    font_size: 32
-
-<Label>
-    font_size: 32
-    
-
 #: import utils kivy.utils
 <MyLayout>
-    canvas.before:
-        Color:
-            rgba: utils.get_color_from_hex("#23272a")
-        Rectangle:
-            pos: self.pos
-            size: self.size
-
-
     BoxLayout:
         orientation: "vertical"
-        #orientation: "horizontal"
         size: root.width, root.height
-
-        padding: 30
-        spacing: 30
-
-        Label:
-            text: "Name"
-            background_color: (0,0,0,0)
-            canvas.before:
-                Color:
-                    rgba: self.background_color
-                Rectangle: 
-                    size: self.size
-                    pos: self.pos
-            color: (1,0,0)
-            bold: True
-            italic: True
-            outline_color: (0,0,0)
-            outline_width: 5
-
-        TextInput:
-            id: Name
+        canvas.before:
+            Color:
+                rgba: (1,1,1,1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                source: "images/1_1.jpg"
             
         Label:
-            text: "Age"
-            background_color: (0,0,0,0)
+            id: name_label
+            font_size: 32
+            text: "Enter Name:- "
             canvas.before:
                 Color:
-                    rgba: self.background_color
-                Rectangle: 
-                    size: self.size
+                    rgba: (0,0,0,.3)
+                Rectangle:
                     pos: self.pos
-            color: (1,0,0)
-            bold: True
-            italic: True
-            outline_color: (0,0,0)
-            outline_width: 5
+                    size: self.size
+            color: (1,0,0,1)
 
         TextInput:
-            id: Age
+            id: name_input
+            multiline: False
+            font_size: 32
+            # size_hint: (1,.5)
+            background_color: (.5,.5,.5,.3)
+
             
 
-        Button:
+        Button: 
             text: "Submit"
-            background_color: (45/255.0,49/255.0,52/255.0,1)
-            
+            font_size: 32
+            # size_hint: (1, .5)
+            background_color: (.5,.5,.5,.6)
+            on_press: root.press()
 
-        Button:
-            text: "Clear"
-            background_color: (45/255.0,49/255.0,52/255.0,1)
-            
-
-
-        
+    

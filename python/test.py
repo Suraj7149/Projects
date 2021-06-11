@@ -1,14 +1,12 @@
-from tkinter import Label
-from typing import Text
-from kivy.app import App
-from kivy.uix.label import Label
-from kivy.uix.button import Button
+from os import terminal_size
+from tkinter import *
 
-class Music_Player(App):
-    def build(self):
-        
-        return Label(text="Hello World")
+root = Tk()
+root.title("Transparent BG!")
+root.geometry("1270x720")
 
+root.attributes("-alpha", 0)
 
-if __name__ == "__main__":
-    Music_Player().run()
+Label(root, text="hello").pack()
+
+root.mainloop()
