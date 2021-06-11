@@ -56,14 +56,14 @@ class MyGridLayout(Widget):
 
     def press(self):
             name = self.Name.text
-            number = self.Num.text
+            num = self.Num.text
             age = self.Age.text
 
             self.add_widget(Label(text=f"You are {name}\ncode no. {number}\nAge is {age}", font_size = 16))
             
-            self.name.text = ""
-            self.number.text = ""
-            self.age.text = ""
+            self.Name.text = ""
+            self.Num.text = ""
+            self.Age.text = ""
 
 
 class PracticeApp(App):
