@@ -5,7 +5,7 @@ from kivy.properties import ObjectProperty
 from kivy.lang import Builder
 from kivy.uix.widget import Widget
 
-Builder.load_file("box.kv")
+Builder.load_file("box1.kv")
 
 class MyLayout(Widget):
     pass
@@ -14,3 +14,7 @@ class MyLayout(Widget):
 class BoxApp(App):
     def build(self):
         return MyLayout()
+
+
+if __name__ == "__main__":
+    BoxApp().run()
