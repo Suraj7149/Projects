@@ -1,3 +1,4 @@
+#: import utils kivy.utils
 <MyGridLayout>
     GridLayout:
         cols:1
@@ -11,20 +12,43 @@
             TextInput:
                 id: Name
                 multilines:False
+                background_color: utils.get_color_from_hex("#66CDAA")
 
             Label:
                 text: "Num"
             TextInput:
                 id: Num
                 multilines:False
+                background_color: utils.get_color_from_hex("#66CDAA")
+
 
             Label:
                 text: "Age"
             TextInput:
                 id: Age
                 multilines:False
+                background_color: utils.get_color_from_hex("#66CDAA")
+
 
         Button: 
             text: "Submit"
             font_size: 32
             on_press: root.press()
+            
+            background_normal: " "
+
+            background_color: (102/255,205/255,170/255,.5)
+
+            #background_color: utils.get_color_from_hex("#AFEEEE")
+
+        Button: 
+            text: "Close"
+            font_size: 32
+            on_press: exit()
+            
+            background_normal: " "
+
+            background_color: (102/255,205/255,170/255,.5)
+
+            #background_color: utils.get_color_from_hex("#AFEEEE")
+
