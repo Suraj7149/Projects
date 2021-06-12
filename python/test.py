@@ -1,12 +1,15 @@
-from os import terminal_size
 from tkinter import *
+from tkinter import ttk
 
 root = Tk()
-root.title("Transparent BG!")
-root.geometry("1270x720")
+root.geometry("800x600")
 
-root.attributes("-alpha", 0)
+root.attributes("-alpha", 0.5)
 
-Label(root, text="hello").pack()
+def scale(x):
+    root.attributes("-alpha",my_slider.get())
+
+my_slider = ttk.Scale(root,from_=0.1, to=1.0, value = 0.7, command=scale)
+my_slider.pack()
 
 root.mainloop()

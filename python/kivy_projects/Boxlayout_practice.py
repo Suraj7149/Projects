@@ -1,25 +1,23 @@
 import kivy
 from kivy.app import App
+from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.uix.widget import Widget
 from kivy.core.window import Window
 
+Window.size=(500,700)
 
-Builder.load_file("box.kv")
+Builder.load_file("calc.kv")
 
 class MyLayout(Widget):
-    
-    Window.size = (1280,720)
-    def press(self):
-        name = self.ids.name_input.text
-        
-        self.ids.name_label.text = "Your name:- "+name+"\nWelcome to the Family."
 
-class BoxApp(App):
+    pass
+
+class CalculatorApp(App):
     def build(self):
         
         return MyLayout()
 
 
 if __name__ == "__main__":
-    BoxApp().run()
+    CalculatorApp().run()

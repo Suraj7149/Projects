@@ -1,11 +1,13 @@
 from tkinter import * 
 from tkinter import filedialog
 from tkinter import font
-from tkinter.font import Font
-from typing import ItemsView
+from tkinter.font import BOLD, Font
 import easygui
 from tkinter import colorchooser
 from datetime import date
+from tkinter import ttk
+
+
 
 w = 800
 h = 600
@@ -22,6 +24,8 @@ selected = None
 root = Tk()
 root.geometry(f"{w}x{h}")
 root.title("Notepad")
+transparency_value = 0.7
+root.attributes("-alpha", transparency_value)
 
 
 def get_name(name):
@@ -63,13 +67,11 @@ def save(input):
 
 
 def full(e):
-    w = root.winfo_screenwidth
-    h = root.winfo_screenheight
-
-    root.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(), root.winfo_screenheight()))
+    root.attributes("-fullscreen", True)
 
 
 def default_view(e):
+    root.attributes("-fullscreen", False)
     w = 800
     h = 600
     root.geometry(f"{w}x{h}")
@@ -198,8 +200,8 @@ def all_text_color():
     my_color = colorchooser.askcolor()[1]
     if my_color:
         my_text.config(fg=my_color)
-    
 
+    
 def change_font():
     my_color = colorchooser.askcolor()[1]
     color_font = font.Font(my_text, my_text.cget("font"))
@@ -220,6 +222,11 @@ Button_font = Font(family="Ubuntu", size=12, weight="bold")
 status_bar = Label(root, text="Ready    "+'\t\t'+str(day), font=Button_font, anchor=E)
 status_bar.pack(fill=X,side=BOTTOM)
 
+def scale(x):
+    root.attributes("-alpha", my_scale.get())
+
+my_scale = ttk.Scale(root, from_=0.4, to=1.0, value=0.7,orient=HORIZONTAL, command=scale)
+my_scale.pack(side=BOTTOM)
 my_frame = Frame(root)
 my_frame.pack(side=LEFT, fill="both")
 
@@ -231,7 +238,7 @@ Hori_text_scroll = Scrollbar(my_frame, orient="horizontal")
 Hori_text_scroll.pack(side=BOTTOM, fill=X)
 
 my_text = Text(my_frame, width=w, height=h, font=text_font, fg="black", bg="grey", 
-            selectbackground="white", undo=True, yscrollcommand=text_scroll.set,
+            selectbackground="orange", undo=True, yscrollcommand=text_scroll.set,
             wrap="none", xscrollcommand=Hori_text_scroll.set)
 my_text.pack(side=LEFT, fill="both")
 
@@ -253,7 +260,7 @@ edit.add_command(label="Undo", command=my_text.edit_undo, accelerator="Ctrl + z"
 edit.add_command(label="Redo", command=my_text.edit_undo, accelerator="Ctrl + y")
 view = Menu(menubar, tearoff=0, fg ="white", bg="black", font=Button_font)
 view.add_command(label="Highlighter", command=change_font)
-view.add_command(label="change Font", command=all_text_color)
+view.add_command(label="Change Font Color", command=all_text_color)
 view.add_command(label="Change Background", command=change_bg)
 view.add_command(label="Fullscreen", command=lambda: full(1), accelerator="F11")
 view.add_command(label="Bold", command=lambda: bold_text(1), accelerator="Ctrl + b")
