@@ -194,12 +194,14 @@ def change_bg():
     my_color = colorchooser.askcolor()[1]
     if my_color:
         my_text.config(bg=my_color)
+        status_bar.config(bg=my_color)
     
 
 def all_text_color():
     my_color = colorchooser.askcolor()[1]
     if my_color:
         my_text.config(fg=my_color)
+        status_bar.config(fg=my_color)
 
     
 def change_font():
