@@ -1,3 +1,4 @@
+#! /usr/bin/env python
 from tkinter import * 
 from tkinter import filedialog
 from tkinter import font
