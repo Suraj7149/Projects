@@ -23,7 +23,7 @@ class MyLayout(Widget):
 
 
     def add_number(self, i):
-        if self.ids.calc_input.text == "0":
+        if self.ids.calc_input.text == "0" or self.ids.calc_input.text == "ERROR" :
             self.clear()
         self.ids.calc_input.text = self.ids.calc_input.text+str(i)
 
@@ -37,50 +37,28 @@ class MyLayout(Widget):
 
     def dot(self):
         text = self.ids.calc_input.text
-        if "." in text:
+        num_list = text.split("+")
+        num_list2 = text.split("*")
+        num_list3 = text.split("-")
+        num_list4 = text.split("/")
+
+        if ("+" in text and "." not in num_list[-1]) \
+                or ("/" in text and "." not in num_list4[-1])\
+                or ("*" in text and "." not in num_list2[-1])\
+                or ("-" in text and "." not in num_list3[-1]):
+            self.ids.calc_input.text = self.ids.calc_input.text + "."
+        elif "." in text:
             pass
         else:
             self.ids.calc_input.text = self.ids.calc_input.text + "."
     def equal(self):
         num = self.ids.calc_input.text
-         
-        if "+" in num:
-            num_list = num.split("+")
-            j = 0
-            for i in num_list:
-                j = j + int(i)
 
-            self.ids.calc_input.text = str(j)
-
-        if "-" in num:
-            num_list = num.split("-")
-            j = 0
-            for i in num_list:
-                if j == 0:
-                    j = float(i)
-                else:
-                    j = j - float(i)
-            self.ids.calc_input.text = str(j)
-
-        if "x" in num:
-            num_list = num.split("x")
-            j = 0
-            for i in num_list:
-                for i in num_list:
-                    if j == 0:
-                        j = float(i)
-                    else:
-                        j = j*float(i)
-            self.ids.calc_input.text = str(j)
-
-    #     if "/" in num:
-    #         num_list = num.split("+")
-    #         j = 0
-    #         for i in num_list:
-    #             j = j / float(i)
-
-    #         self.ids.calc_input.text = str(j)
-
+        try:
+            answer = eval(num)
+            self.ids.calc_input.text = str(answer)
+        except:
+            self.ids.calc_input.text = "ERROR"
     
 
 class CalculatorApp(App):
