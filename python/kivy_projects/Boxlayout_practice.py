@@ -1,13 +1,10 @@
-from os import PRIO_PGRP
-from typing import Text
-import kivy
 from kivy.app import App
 from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.uix.widget import Widget
 from kivy.core.window import Window
 
-Window.size=(500,700)
+Window.size=(600,700)
 
 Builder.load_file("calc.kv")
 
