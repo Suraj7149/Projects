@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 from tkinter import * 
 from tkinter import filedialog
 from tkinter import font
@@ -62,7 +62,7 @@ def save(input):
         text_file.write(my_text.get(1.0, END))
         text_file.close()
         root.title(get_name(file_path))
-        status_bar.config(text=f'Saved: {file_path}')
+        status_bar.config(text=f'Saved: {file_path}'+str(day))
     else:
         save_file(1)
 
@@ -219,7 +219,7 @@ def change_font():
             my_text.tag_add("colored", "sel.first", "sel.last")
     
 
-text_font = Font(family="Times New Roman", size=14)
+text_font = Font(family="Times New Roman", size=17)
 Button_font = Font(family="Ubuntu", size=12, weight="bold")
 
 status_bar = Label(root, text="Ready    "+'\t\t'+str(day), font=Button_font, anchor=E)
