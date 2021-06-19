@@ -1,12 +1,14 @@
 #: import utils kivy.utils
 <MyLayout>
+    id: my_widget
+
     BoxLayout:
 
         orientation: "vertical"
         size: root.width, root.height
 
-        #padding: 5
-        #spacing: 5
+        padding: 30
+        spacing: 30
         canvas.before:
             Color:
                 rgba: (1,1,1,1)
@@ -15,5 +17,33 @@
                 size: self.size
                 source: "images/1.jpg"
 
-        
-        
+        #Button:
+        #    text: "Hello Button"
+
+        #RoundedButton: 
+        #    text: "Round Button"
+        #    size_hint: (.3,.3)
+        #    pos_hint: {"center_x": 0.5}
+        #    on_press: exit()
+        #    #background_normal: ""
+        #    #background_color: (157/255,157/255,157/255,.5)
+
+
+#<RoundedButton@Button>
+#    background_color: (0,0,0,0)
+#    background_normal: ''
+#    canvas.before:
+#        Color:
+#            rgba: (157/255,157/255,157/255,.5)
+#        RoundedRectangle:
+#            size: self.size
+#            pos: self.pos
+#            radius: [58]
+
+        Image:
+            id: my_image
+            source: ""
+
+        FileChooserListView:
+            id: filechooser
+            on_selection: my_widget.selected(filechooser.selection)

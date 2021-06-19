@@ -1,0 +1,31 @@
+#: import utils kivy.utils
+<MyLayout>
+    slide_text: slider_label
+    id: my_widget
+
+    BoxLayout:
+
+        orientation: "vertical"
+        size: root.width, root.height
+
+        padding: 30
+        spacing: 30
+        canvas.before:
+            Color:
+                rgba: (1,1,1,1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                source: "images/1.jpg"
+
+        Label:
+            id: slider_label
+            text: "Slide The Slider!"
+            font_size: 32
+
+        Slider:
+            min: 1
+            max: 50
+            step: 1
+            orientation: "horizontal"
+            on_value: root.slide_it(*args)

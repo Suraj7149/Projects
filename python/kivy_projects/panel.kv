@@ -1,0 +1,18 @@
+#: import utils kivy.utils
+<MyLayout>
+    id: my_widget
+
+    BoxLayout:
+
+        orientation: "vertical"
+        size: root.width, root.height
+
+        padding: 30
+        spacing: 30
+        canvas.before:
+            Color:
+                rgba: (1,1,1,1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                source: "images/1.jpg"
