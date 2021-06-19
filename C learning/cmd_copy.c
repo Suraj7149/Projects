@@ -73,18 +73,19 @@ void keywords(){
 }
 
 int main(){
-
-   int a = 0;
+    
     char input[50];
+    int a = 0;
+    
 
     while(a == 0){
         printf(">>>");
-        scanf("%s", &input);
-
+        scanf("%s", input);
+        
         if (strcmp(input, "exit") == 0){
             a++;
             break;
-            
+        
         }else if(strcmp(input, "help") == 0){
             printf("Commands:-\n\t- help\n\t- indentifiers\n\t- literals\n\t- keywords\n\t- about\n\t- exit\n");
 
