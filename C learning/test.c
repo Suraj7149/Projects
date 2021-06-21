@@ -1,9 +1,9 @@
-# include<stdio.h>
-
+#include<stdio.h>
 int main(){
-    char input[50];
+	int sum = 0;
+	do{
+	sum++;
+	}while(sum<10);
 
-    scanf("%s", input);
-
-    printf("%s", input);
+	return 0;
 }
