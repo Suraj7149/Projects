@@ -3,3 +3,5 @@ bin
 lib
 pyvenv.cfg
 images
+Scripts
+python/kivy_projects

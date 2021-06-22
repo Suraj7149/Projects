@@ -1,4 +1,3 @@
-from os import WIFSIGNALED
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.core.window import Window
