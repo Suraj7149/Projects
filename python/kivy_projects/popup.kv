@@ -1,0 +1,46 @@
+#: import Factory kivy.factory.Factory
+<MyPopup@Popup>           
+    auto_dismiss: False
+    size_hint: 0.6, 0.7
+    pos_hint: {"x":0.2, "top":0.9}
+    title: "This a Pop up"
+    BoxLayout: 
+        orientation: "vertical"
+        size: root.width, root.height
+        canvas.before:
+            Color:
+                rgba: (1,1,1,1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                source: "images/mountain600.jpg"
+        Label:
+            text: "Pop up Box"
+            font_size: 20
+        Button:
+            text: "exit"
+            font_size: 20
+            size_hint: 1, 0.2
+            background_color: (1, 1, 1, .7)
+            on_release: root.dismiss()
+
+<MyLayout>
+    BoxLayout: 
+        orientation: "vertical"
+        size: root.width, root.height
+        canvas.before:
+            Color:
+                rgba: (1,1,1,1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                source: "images/morning600.jpg"
+
+        Label: 
+            text: "Popup Stuff"
+            font_size: 32
+
+        Button:
+            text: "Popup"
+            font_size: 32
+            on_release: Factory.MyPopup().open()

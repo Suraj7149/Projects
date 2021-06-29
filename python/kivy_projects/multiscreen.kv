@@ -1,0 +1,70 @@
+# <MyLayout>
+#     BoxLayout:
+#         orientation: "vertical"
+#         size: root.width, root.height
+#         canvas.before:
+#             Color:
+#                 rgba: (1,1,1,1)
+#             Rectangle:
+#                 pos: self.pos
+#                 size: self.size
+#                 source: "images/morning600.jpg"
+
+
+WindowManager:
+    FirstWindow: 
+    SecondWindow: 
+
+
+<FirstWindow>:
+    name: "First"
+
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+        canvas.before:
+            Color:
+                rgba: (1,1,1,1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                source: "images/morning600.jpg"
+
+        Label: 
+            text: "First Screen"
+            font_size: 32
+
+        Button:
+            text: "Next Screen"
+            font_size: 32
+            on_release: 
+                app.root.current = "Second"
+                root.manager.transition.direction = "left" # up and down also avaliable
+            background_color: (1,1,1,0.5)
+
+
+<SecondWindow>:
+    name: "Second"
+
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+        canvas.before:
+            Color:
+                rgba: (1,1,1,1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                source: "images/morning600.jpg"
+
+        Label: 
+            text: "Second Screen"
+            font_size: 32
+
+        Button:
+            text: "Previous Screen"
+            font_size: 32
+            on_release: 
+                app.root.current = "First"
+                root.manager.transition.direction = "right"
+            background_color: (1,1,1,0.5)

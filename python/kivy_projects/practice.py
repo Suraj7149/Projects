@@ -1,28 +1,38 @@
-from os import terminal_size
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.core.window import Window
 from kivy.uix.widget import Widget
+from kivy.uix.screenmanager import Screen, ScreenManager
+
+# define different screen 
+class FirstWindow(Screen):
+    pass
+
+class SecondWindow(Screen):
+    pass
+
+class WindowManager(ScreenManager):
+    pass
 
 Window.size = (800,600)
-Builder.load_file("check_boxes.kv")
+kv = Builder.load_file("multiscreen.kv")
 
 class MyLayout(Widget):
     checks = []
     
-    def checkbox_click(self, instance, value, toppings):
-        if value == True:
-            MyLayout.checks.append(toppings)
-            tops = ''
-            for x in MyLayout.checks:
-                tops = tops +" "+ x
-            self.ids.output_label.text = f"You selected: {tops}"
-        else:
-            MyLayout.checks.remove(toppings)
-            tops = ''
-            for x in MyLayout.checks:
-                tops = tops +" "+ x
-            self.ids.output_label.text = f"You selected: {tops}"
+    # def checkbox_click(self, instance, value, toppings):
+    #     if value == True:
+    #         MyLayout.checks.append(toppings)
+    #         tops = ''
+    #         for x in MyLayout.checks:
+    #             tops = tops +" "+ x
+    #         self.ids.output_label.text = f"You selected: {tops}"
+    #     else:
+    #         MyLayout.checks.remove(toppings)
+    #         tops = ''
+    #         for x in MyLayout.checks:
+    #             tops = tops +" "+ x
+    #         self.ids.output_label.text = f"You selected: {tops}"
 
     # def selected(self, filename):
     #     try:
@@ -38,7 +48,8 @@ class MyLayout(Widget):
 
 class PracticeApp(App):
     def build(self):
-        return MyLayout()
+        # return MyLayout()
+        return kv
 
 if __name__ == "__main__":
     PracticeApp().run()
