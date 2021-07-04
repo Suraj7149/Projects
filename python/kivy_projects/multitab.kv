@@ -1,0 +1,24 @@
+<MyLayout>
+    do_default_tab: False
+    tab_pos: "right_top"
+
+    TabbedPanelItem:
+        text: "Tab 1"
+        Label: 
+            text: "Hello World"
+
+    TabbedPanelItem:
+        text: "Tab 2"
+        BoxLayout:
+
+            Label: 
+                text: "Hello World"
+
+            Button:
+                text: "exit"
+                on_press: exit()
+    
+    TabbedPanelItem:
+        text: "Tab 3"
+        Image:
+            source: "images/alienware2600.jpg"

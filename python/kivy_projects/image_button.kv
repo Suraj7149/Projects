@@ -1,0 +1,35 @@
+<MyLayout>
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+        canvas.before:
+            Color:
+                rgba: (1,1,1,1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                source: "images/morning600.jpg"
+        padding: 40
+        spacing: 20
+
+        Label:
+            id: label1
+            text: "Say Hello"
+            font_size: 32
+
+        Button: 
+            id: login_button
+            # text: "Hello"  
+            # font_size: 32
+            size_hint: .10, .18
+            pos_hint: {"center_x": 0.5}
+            background_color: (0.5,0.5,0.5,0.5)
+            on_press: root.pressed_on()
+            on_release: root.pressed_off()
+            Image:
+                id: button_image
+                source: "images/login4.png"
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+
+            

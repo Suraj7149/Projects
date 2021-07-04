@@ -1,0 +1,26 @@
+<MyLayout>
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+        canvas.before:
+            Color:
+                rgba: (1,1,1,1)
+            Rectangle:
+                pos: self.pos
+                source: "images/morning600.jpg"
+                size: self.size
+
+        Label:
+            id: click_label
+            text: "Pick the Color"
+            font_size: 32
+        
+        Spinner:
+            id: spinner_id
+            text: "Color"
+            values: ["Red", "Green", "Blue"]
+
+            on_text: root.spinner_clicked(spinner_id.text)
+
+        Label:
+            text: ""

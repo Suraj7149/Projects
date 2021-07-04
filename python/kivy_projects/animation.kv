@@ -1,0 +1,29 @@
+<Mylayout>
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+        
+        padding: 50
+        spacing: 20
+
+        canvas.before:
+            Color:
+                rgba: (1,1,1,1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                source: "images/morning600.jpg"
+
+        Label: 
+            id: label_id
+            text: 'animation in kivy'
+            font_size: 32
+
+        Button:
+            id: button_id
+            text: "animate it"
+            font_size: 32
+            size_hint: .5, .5
+            pos_hint: {"center_x": 0.5}
+
+            on_release: root.moove_it(self)

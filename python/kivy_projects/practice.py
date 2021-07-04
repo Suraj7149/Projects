@@ -15,11 +15,27 @@ class WindowManager(ScreenManager):
     pass
 
 Window.size = (800,600)
-kv = Builder.load_file("multiscreen.kv")
+# kv = Builder.load_file("multiscreen.kv")
+Builder.load_file("image_button.kv")
+
 
 class MyLayout(Widget):
     checks = []
     
+    def pressed_on(self):
+        self.ids.label1.text = "Logged In"
+        self.ids.button_image.source = "images/login3.png"
+
+
+    def pressed_off(self):
+        self.ids.label1.text = "Logged Off"
+        self.ids.button_image.source = "images/login4.png"
+
+
+    # def spinner_clicked(self, value):
+    #     self.ids.clicked_label.text = f"You Selected {value}"
+
+
     # def checkbox_click(self, instance, value, toppings):
     #     if value == True:
     #         MyLayout.checks.append(toppings)
@@ -48,8 +64,8 @@ class MyLayout(Widget):
 
 class PracticeApp(App):
     def build(self):
-        # return MyLayout()
-        return kv
+        return MyLayout()
+        # return kv
 
 if __name__ == "__main__":
     PracticeApp().run()
