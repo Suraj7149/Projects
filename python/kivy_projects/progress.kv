@@ -1,0 +1,29 @@
+<MyLayout>
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+        canvas.before:
+            Color: 
+                rgba: (1,1,1,1)
+            Rectangle: 
+                size: self.size
+                pos: self.pos
+                source: "images/alienware600.jpg"
+
+        Label:
+            id: label_id
+            text: "0% progress"
+            font_size: 15
+        
+        ProgressBar:
+            id: progress_bar_id
+            value: 0
+            min: 0
+            max: 100
+            pos_hint: {"x": .1}
+            size_hint_x: 0.8
+
+        Button:
+            text: "Update"
+            font_size: 32
+            on_press: root.pressed()
