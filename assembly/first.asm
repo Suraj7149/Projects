@@ -1,3 +1,8 @@
+; Hello World assembly program
+; 
+; Author: Suraj Gupta
+; Date: 9-07-2021
+
 DATA SEGMENT
     MSG DB "HELLO WORLD$"
 DATA ENDS
