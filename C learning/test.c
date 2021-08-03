@@ -1,33 +1,24 @@
-#include<stdio.h>
-int age=20;
+#include <stdio.h>  
+int main()  
+{  
+    char first_string[20]; // declaration of char array variable  
+    char second_string[20]; // declaration of char array variable  
+    int i;  // integer variable declaration  
+    printf("Enter the first string");  
+    scanf("%s",first_string);  
+    printf("\nEnter the second string");  
+    scanf("%s",second_string);  
+    for(i=0;first_string[i]!='\0';i++);   
+      
+      
+    for(int j=0;second_string[j]!='\0';j++)  
+    {  
+        
+        first_string[i]=second_string[j];  
+        i++;  
+    }  
+    first_string[i]='\0';  
+    printf("After concatenation, the string would look like: %s", first_string); 
 
-int main(){
-	int matrix1[10][10], matrix2[10][10],matrix3[10][10], i, j;
-
-	for(i=0; i<3; i++){
-		for(j=0; j<3; j++){
-			matrix1[i][j] = i+j;
-		}
-	}
-
-	for(i=0; i<3; i++){
-		for(j=0; j<3; j++){
-			matrix2[i][j] = i+j;
-		}
-	}
-
-	for(i=0; i<3; i++){
-		for(j=0; j<3; j++){
-			matrix3[i][j] = matrix1[i][j] + matrix2[i][j];
-		}
-	}
-
-	for(i=0;i<3;i++)
-  	{ printf("\n");
-      for(j=0;j<3;j++)
-           printf("%d\t",matrix3[i][j]);
-  	}
- 	printf("\n\n");
-	printf("%d",age);
 	return 0;
 }

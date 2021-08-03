@@ -1,0 +1,24 @@
+<MyLayout>
+
+    BoxLayout: 
+        orientation: "vertical"
+        size: root.width, root.height
+        canvas.before:
+            Color:
+                rgba: (1,1,1,1)
+            Rectangle: 
+                pos: self.pos
+                size: self.size
+                source: "images/alienware600.jpg"
+        
+        Label:
+            id: text1
+            text: "Switch is Off"
+            font_size: 32
+
+        Switch: 
+            active: False
+            font_size: 32
+            on_active: root.switch_click(self, self.active)
+
+        

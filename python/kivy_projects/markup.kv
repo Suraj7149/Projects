@@ -1,0 +1,25 @@
+<MyLayout>
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+        canvas.before:
+            Color: 
+                rgba: (1,1,1,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "images/alienware600.jpg"
+
+        Label: 
+            markup: True
+            font_size: 32
+            text: "this is [color=#fc0303][b]Bold[/b][/color] [font=times]text[/font]"
+        Label: 
+            markup: True
+            font_size: 32
+            text: "this is [size=100][i]Itallic[/i][/size] text [sup]Up[/sup] and [sub]Down[/sub]"
+
+        Button:
+            markup: True
+            font_size: 32
+            text: "[u]Button[/u] for [s]Spamming[/s]"
