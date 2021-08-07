@@ -2,19 +2,14 @@ from kivy import app
 # MD stands for Material Design create and 
 # stated by google as how a good add should look like. 
 
-from kivy.app import App
-from kivy.uix.widget import Widget
 from kivy.lang import Builder
+from kivymd.app import MDApp
 
-Builder.load_file("kivymd.kv")
-
-class MyLayout(Widget):
-    pass
-
-class KivyMdApp(App):
+class MainApp(MDApp):
     def build(self):
-        return MyLayout()
+        self.theme_cls.theme_style = "Dark"
+        self.theme_cls.primary_palette = "DeepPurple"
+        self.theme_cls.accent_palette = "Red"
+        return Builder.load_file("kivymd.kv")
 
-
-if __name__ == "__main__":
-    KivyMdApp().run()
+MainApp().run()
