@@ -1,0 +1,15 @@
+# Alert Dialog Boxes
+MDBoxLayout:
+    orientation: "vertical"
+    
+    MDScreen:
+
+        MDRectangleFlatButton:
+            text: "Alert PopUp!!"
+            pos_hint: {"center_x": 0.5, "center_y": .5}
+            on_release: app.show_alert_dialog()
+
+        MDLabel:
+            id: my_label
+            text: "Some Stuff"
+            pos_hint: {"center_x": 0.95, "center_y": .4}
