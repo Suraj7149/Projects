@@ -1,0 +1,42 @@
+# Image Swiper App
+<MySwiper@MDSwiperItem>
+    #FitImage:
+    #    source: "images/alienware600.jpg"
+    #    radius: [20, ]
+
+
+MDScreen:
+    MDToolbar:
+        id: toolbar
+        title: "Our Swiper App"
+        elevation: 10
+        pos_hint: {"top":1}
+
+    MDSwiper:
+        size_hint_y: None
+        height: root.height - toolbar.height - dp(40)
+        y: root.height - self.height - toolbar.height - dp(20)
+
+        MySwiper:
+            FitImage:
+                source: "images/cpux600.jpg"
+                radius: [20, ]
+
+
+        MySwiper:
+            FitImage:
+                source: "images/alienware2600.jpg"
+                radius: [20, ]
+        MySwiper:
+            FitImage:
+                source: "images/morning600.jpg"
+                radius: [20, ]
+        MySwiper:
+            FitImage:
+                source: "images/mountain600.jpg"
+                radius: [20, ]
+        
+        MySwiper:
+            FitImage:
+                source: "images/razer600.jpg"
+                radius: [20, ]
