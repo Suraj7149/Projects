@@ -1,0 +1,91 @@
+#: import ew kivy.uix.effectwidget
+
+<MusicScreen>
+    EffectWidget:
+        effects: [ew.VerticalBlurEffect(size=12), ew.HorizontalBlurEffect(size=12) ]
+        FitImage:
+            source: "images/wonder_woman600.jpg"
+            radius: [20,]
+
+    MDBoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+        padding: ["10dp", "30dp", "10dp", "50dp"]
+        SongCover:
+            id: sc
+            size: (290, 290)
+            size_hint: None, None
+            pos_hint: {"center_x" : 0.5}
+            RotatingImage:
+                angle: sc.angle
+                source: "images/wonder_woman600.jpg"
+                radius: [200,]
+        Widget:
+            size_hint: None, None
+            height: "25sp"
+        Label:
+            text: "Song Name"
+            bold: True
+            font_size: "32sp"
+            size_hint_y: None
+            height: self.texture_size[1]
+        Label:
+            text: "Artist Name"
+            height: self.texture_size[1]
+            size_hint_y: None
+            
+        MDBoxLayout:
+            orientation: "vertical"
+            Slider:
+                id: progress
+                color: [.7, 0, 0, 1]
+                min: 0
+                max: 100
+                value: 0
+                background_width: "20dp"
+                cursor_image: ""
+                cursor_size: ("13dp", "13dp")
+                value_track_color: [0,0.5,0.5,1]
+                value_track: True
+
+            MDBoxLayout:
+                
+                MyIcon:
+                    icon: "restart"
+                MyIcon:
+                    icon: "skip-previous-outline"
+                MyIcon:
+                    icon: "skip-backward-outline"
+                MyIcon
+                    icon: "play-outline"
+                    on_press: sc.play(progress)
+                MyIcon
+                    icon: "skip-forward"
+                MyIcon
+                    icon: "skip-next-outline"
+                MyIcon
+                    icon: "format-list-bulleted"
+
+
+<MyIcon@MDIconButton>
+    color: [0.7, 0, 0, 1]
+    size_hint: None, None
+    user_font_size:"20sp"
+    theme_text_color: "Custom"
+    size:("80dp", "80dp")
+    text_color: [1,1,1,1]
+
+
+<RotatingImage@FitImage>
+    angle: 0
+    canvas.before: 
+        PushMatrix
+        Rotate:
+            angle: root.angle
+            origin: self.center
+
+    canvas.after:
+        PopMatrix
+
+
+
