@@ -1,5 +1,11 @@
 #: import ew kivy.uix.effectwidget
+PageLayoutExample:
 
+<PageLayoutExample@PageLayout>:
+    MDBoxLayout:
+    BoxLayoutExample:
+    
+    
 <MusicScreen>
     EffectWidget:
         effects: [ew.VerticalBlurEffect(size=12), ew.HorizontalBlurEffect(size=12) ]
@@ -87,5 +93,21 @@
     canvas.after:
         PopMatrix
 
+<BoxLayoutExample@BoxLayout>:
 
+        Button:
+            text: "Hello"
+            size_hint: 1, .2
+        
+        Button:
+            text: "Hello"
+            size_hint: 1, .2
+        
+        Button:
+            text: "Hello"
+            size_hint: 1, .2
+
+        Button:
+            text: "Hello"
+            size_hint: 1, .2
 
