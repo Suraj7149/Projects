@@ -1,3 +1,4 @@
+from posixpath import split
 from kivy.animation import Animation
 from kivy.lang.builder import Builder
 from kivy.uix.screenmanager import Screen
@@ -7,10 +8,27 @@ from kivy.core.window import Window
 from kivy.properties import NumericProperty
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivy.animation import Animation
+from tkinter import * 
+from tkinter import filedialog
+
+file_path = None
 Window.size = (320, 600)
 
 
 Builder.load_file("music.kv")
+
+def startup():
+        global file_path
+        root = Tk()
+        file_path = filedialog.askopenfilename(title="Select Music Files to Play")
+        root.destroy()
+        list1 = file_path.split("/")
+        list1.pop()
+        file_path = ""
+        for i in list1:
+                file_path = file_path + i + "\\"
+
+        print(file_path)
 
 class MusicScreen(Screen):
         pass
@@ -44,4 +62,5 @@ class MainApp(MDApp):
                 return MusicScreen()
 
 
+startup()
 MainApp().run()

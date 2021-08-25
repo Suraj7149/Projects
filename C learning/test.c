@@ -13,7 +13,6 @@ int main()
       
     for(int j=0;second_string[j]!='\0';j++)  
     {  
-        
         first_string[i]=second_string[j];  
         i++;  
     }  
