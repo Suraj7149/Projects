@@ -1,12 +1,6 @@
 #: import ew kivy.uix.effectwidget
-PageLayoutExample:
 
-<PageLayoutExample@PageLayout>:
-    MDBoxLayout:
-
-    
-    
-<MusicScreen>
+<MusicScreen>  
     EffectWidget:
         effects: [ew.VerticalBlurEffect(size=12), ew.HorizontalBlurEffect(size=12) ]
         FitImage:
@@ -16,7 +10,54 @@ PageLayoutExample:
     MDBoxLayout:
         orientation: "vertical"
         size: root.width, root.height
-        padding: ["10dp", "30dp", "10dp", "50dp"]
+        padding: ["0dp", "0dp", "0dp", "30dp"]
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: 1 , 0.3
+            padding: 5
+            Button:
+                background_color: (1,1,1,0)
+                on_press: app.stop()
+                Image:
+                    source: "images/minimize1.png"
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                #size_hint: 0.5, 0.3
+                
+
+                
+                
+                #pos_hint: {"center_x": .5, "center_y": 0.85}
+
+            Button:
+                background_color: (1,1,1,0)
+                on_press: app.stop()
+                Image:
+                    source: "images/maximize1.png"
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                #size_hint: 0.5, 0.3
+                
+
+                
+                
+                #pos_hint: {"center_x": .5, "center_y": 0.85}
+                
+            Button:
+                background_color: (1,1,1,0)
+                on_press: app.stop()
+                Image:
+                    source: "images/close9.png"
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+                #size_hint: 0.5, 0.3
+                
+
+                
+                
+                #pos_hint: {"center_x": .5, "center_y": 0.85}
+
+
         SongCover:
             id: sc
             size: (290, 290)

@@ -31,7 +31,6 @@
 
 
 # root.mainloop()
-
 from tkinter import *
 from ctypes import windll
 
@@ -254,7 +253,6 @@ resizex_widget.bind("<B1-Motion>",resizex)
 # resize the window height =======================================================================
 
 
-
 resizey_widget = Frame(window,bg=DGRAY,cursor='sb_v_double_arrow')
 resizey_widget.pack(side=BOTTOM,ipadx=2,fill=X)
 
@@ -279,9 +277,6 @@ def resizey(event):
     resizex_widget.config(bg=DGRAY)
 
 resizey_widget.bind("<B1-Motion>",resizey)
-
-
-
 
 
 # some settings

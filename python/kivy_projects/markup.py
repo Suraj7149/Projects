@@ -2,14 +2,14 @@ from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.lang import Builder
 
-Builder.load_file("carousel.kv")
+Builder.load_file("markup.kv")
 
 class MyLayout(Widget):
     pass
 
-class CarouselApp(App):
+class MarkupApp(App):
     def build(self):
         return MyLayout()
 
 if __name__ == "__main__":
-    CarouselApp().run()
+    MarkupApp().run()

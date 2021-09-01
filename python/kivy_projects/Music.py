@@ -1,4 +1,3 @@
-from posixpath import split
 from kivy.animation import Animation
 from kivy.lang.builder import Builder
 from kivy.uix.screenmanager import Screen
@@ -10,6 +9,8 @@ from kivymd.uix.boxlayout import MDBoxLayout
 from kivy.animation import Animation
 from tkinter import * 
 from tkinter import filedialog
+from kivy.core.window import Window
+
 
 file_path = None
 Window.size = (320, 600)
@@ -58,9 +59,10 @@ class SongCover(MDBoxLayout):
 
 class MainApp(MDApp):
         def build(self):
+                Window.borderless = True
                 self.theme_cls.theme_style = "Dark"
                 return MusicScreen()
 
 
-startup()
+#startup()
 MainApp().run()
