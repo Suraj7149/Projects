@@ -1,5 +1,7 @@
 from kivy.config import Config
 Config.set("graphics", "position", "custom")
+Config.set('graphics', 'borderless', 'True')
+#Config.set('graphics', 'fullscreen', 'auto')
 Config.set("graphics", "left", 400)
 Config.set("graphics", "top", 100)
 from kivy.lang import Builder

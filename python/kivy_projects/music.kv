@@ -17,7 +17,7 @@
             padding: 5
             Button:
                 background_color: (1,1,1,0)
-                on_press: app.stop()
+                on_press: root.minimize()
                 Image:
                     source: "images/minimize1.png"
                     center_x: self.parent.center_x
@@ -31,7 +31,7 @@
 
             Button:
                 background_color: (1,1,1,0)
-                on_press: app.stop()
+                on_press: root.maximize()
                 Image:
                     source: "images/maximize1.png"
                     center_x: self.parent.center_x
@@ -47,7 +47,7 @@
                 background_color: (1,1,1,0)
                 on_press: app.stop()
                 Image:
-                    source: "images/close9.png"
+                    source: "images/close3.png"
                     center_x: self.parent.center_x
                     center_y: self.parent.center_y
                 #size_hint: 0.5, 0.3
@@ -112,6 +112,7 @@
                     icon: "skip-next-outline"
                 MyIcon
                     icon: "format-list-bulleted"
+                    on_press: root.ask()
 
 
 <MyIcon@MDIconButton>
