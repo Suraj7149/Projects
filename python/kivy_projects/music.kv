@@ -4,6 +4,7 @@
     EffectWidget:
         effects: [ew.VerticalBlurEffect(size=12), ew.HorizontalBlurEffect(size=12) ]
         FitImage:
+            id: bg_image
             source: "images/wonder_woman600.jpg"
             radius: [20,]
 
@@ -19,7 +20,7 @@
                 background_color: (1,1,1,0)
                 on_press: root.minimize()
                 Image:
-                    source: "images/minimize1.png"
+                    source: "images/song15.png"
                     center_x: self.parent.center_x
                     center_y: self.parent.center_y
                 #size_hint: 0.5, 0.3
@@ -64,6 +65,7 @@
             size_hint: None, None
             pos_hint: {"center_x" : 0.5}
             RotatingImage:
+                id: music
                 angle: sc.angle
                 source: "images/wonder_woman600.jpg"
                 radius: [200,]
@@ -71,6 +73,7 @@
             size_hint: None, None
             height: "25sp"
         Label:
+            id: song_name
             text: "Song Name"
             bold: True
             font_size: "32sp"

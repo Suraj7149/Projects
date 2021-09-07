@@ -28,24 +28,7 @@ def maximize(e):
         root.geometry("800x600+75+75")
         expand.config(text=' 🗖 ')
         maximized = False
-
-def set_appwindow(mainWindow): # to display the window icon on the taskbar, 
-                               # even when using root.overrideredirect(True)
-
-    # Some WindowsOS styles, required for task bar integration
-    GWL_EXSTYLE = -20
-    WS_EX_APPWINDOW = 0x00040000
-    WS_EX_TOOLWINDOW = 0x00000080
-    # Magic
-    hwnd = windll.user32.GetParent(mainWindow.winfo_id())
-    stylew = windll.user32.GetWindowLongW(hwnd, GWL_EXSTYLE)
-    stylew = stylew & ~WS_EX_TOOLWINDOW
-    stylew = stylew | WS_EX_APPWINDOW
-    res = windll.user32.SetWindowLongW(hwnd, GWL_EXSTYLE, stylew)
-   
-    mainWindow.wm_withdraw()
-    mainWindow.after(10, lambda: mainWindow.wm_deiconify())
-
+        
 def minimize():
     global maximized
     if maximized == True:
