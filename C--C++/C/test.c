@@ -11,18 +11,21 @@ void main(void){
     char ch[1000];
 
     say();
-    scanf("%i", i);
+    scanf("%d", i);
+    printf("%d",i);
     switch (i)
     {
     case 1:
-        file_pointer = fopen("C:\\Users\\santo\\Desktop\\datesheet.txt" , "r");
-        printf("%s", fgets(ch, 1000, file_pointer));
-        fclose(file_pointer);
+        //file_pointer = fopen("C:\\Users\\santo\\Desktop\\datesheet.txt" , "r");
+        //printf("%s", fgets(ch, 1000, file_pointer));
+        //fclose(file_pointer);
+        printf("Choice One.");
         break;
     
     case 2:
+        printf("program ran.\n");
         break;
-    default: printf("program ran.\n");
+    default: 
         break;
     }
     
