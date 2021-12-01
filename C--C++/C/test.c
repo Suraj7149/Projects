@@ -1,32 +1,36 @@
 # include<stdio.h>
 # include<string.h>
-#include<stdlib.h>
+# include<conio.h>
+# include<stdlib.h>
 
-# define say(){ printf("Enter 1 to see the code of this program.\n"); \
-                printf("Enter 2 to close the program:"); }
 
-void main(void){
-    int i;
-    FILE *file_pointer;
-    char ch[1000];
+void main(){
+    system("cls");
+    int i,j,k;
 
-    say();
-    scanf("%d", i);
-    printf("%d",i);
-    switch (i)
-    {
-    case 1:
-        //file_pointer = fopen("C:\\Users\\santo\\Desktop\\datesheet.txt" , "r");
-        //printf("%s", fgets(ch, 1000, file_pointer));
-        //fclose(file_pointer);
-        printf("Choice One.");
-        break;
-    
-    case 2:
-        printf("program ran.\n");
-        break;
-    default: 
-        break;
+    for (i=1; i<=5; i++){
+        for (j=i; j<=5; j++){
+            printf(" ");
+        }
+        for(k=1;k<=i; k++){
+            printf("*");
+        }
+        printf("\n");
     }
     
+    printf("\n");
+    i = 0, j = 0, k = 0;
+    int n = 30;
+
+    for(i=1; i<=n; i++){
+        for (j=1; j<=(40 - i); j++){
+            printf(" ");
+        }
+        for (k=1; k<=(2*i -1); k++){
+            printf("*");
+        }
+        printf("\n");
+    }
+    
+
 }
