@@ -17,6 +17,11 @@ filetype = (
     ("All Files", "*.*")
 )
 
+LGRAY = '#3e4042' # button color effects in the title bar (Hex color)
+DGRAY = '#25292e' # window background color               (Hex color)
+RGRAY = '#10121f' # title bar color                       (Hex color)
+
+
 day = "Today's Date:- "+str(date.today())
 global file_path
 file_path = None
@@ -27,6 +32,8 @@ root.geometry(f"{w}x{h}")
 root.title("Notepad")
 transparency_value = 0.7
 root.attributes("-alpha", transparency_value)
+
+
 
 
 def get_name(name):
@@ -47,7 +54,7 @@ def  save_file(input):
         file_path = text_file
         name = text_file
         name = get_name(text_file)
-        status_bar.config(text=f'Saved: {text_file}\t\t'+str(day))
+        # status_bar.config(text=f'Saved: {text_file}\t\t'+str(day))
         root.title(f'{name}')
 
         text_file = open(text_file, "w")
@@ -62,7 +69,7 @@ def save(input):
         text_file.write(my_text.get(1.0, END))
         text_file.close()
         root.title(get_name(file_path))
-        status_bar.config(text=f'Saved: {file_path}'+str(day))
+        # status_bar.config(text=f'Saved: {file_path}'+str(day))
     else:
         save_file(1)
 
@@ -82,7 +89,7 @@ def new_file(input):
     global file_path
     my_text.delete("1.0", END)
     root.title("New File - Notepad!")
-    status_bar.config(text="New File - Unsaved     \t\t"+str(day))
+    # status_bar.config(text="New File - Unsaved     \t\t"+str(day))
     file_path = False
 
 
@@ -96,7 +103,7 @@ def open_file(input):
 
     # read the text file and show its content on the Text
     f = open(file_path, "r")
-    status_bar.config(text=file_path+'\t\t'+str(day))
+    # status_bar.config(text=file_path+'\t\t'+str(day))
     root.title(get_name(file_path)+"(Read-Only-Mode)")
 
     my_text.insert('1.0', f.read())
@@ -195,14 +202,14 @@ def change_bg():
     my_color = colorchooser.askcolor()[1]
     if my_color:
         my_text.config(bg=my_color)
-        status_bar.config(bg=my_color)
+        # status_bar.config(bg=my_color)
     
 
 def all_text_color():
     my_color = colorchooser.askcolor()[1]
     if my_color:
         my_text.config(fg=my_color)
-        status_bar.config(fg=my_color)
+        # status_bar.config(fg=my_color)
 
     
 def change_font():
@@ -222,8 +229,8 @@ def change_font():
 text_font = Font(family="Times New Roman", size=17)
 Button_font = Font(family="Ubuntu", size=12, weight="bold")
 
-status_bar = Label(root, text="Ready    "+'\t\t'+str(day), font=Button_font, anchor=E)
-status_bar.pack(fill=X,side=BOTTOM)
+# status_bar = Label(root, text="Ready    "+'\t\t'+str(day), font=Button_font, anchor=E)
+# status_bar.pack(fill=X,side=BOTTOM)
 
 def scale(x):
     root.attributes("-alpha", my_scale.get())
@@ -240,7 +247,7 @@ text_scroll.pack(side=RIGHT, fill=Y)
 Hori_text_scroll = Scrollbar(my_frame, orient="horizontal")
 Hori_text_scroll.pack(side=BOTTOM, fill=X)
 
-my_text = Text(my_frame, width=w, height=h, font=text_font, fg="black", bg="grey", 
+my_text = Text(my_frame, width=w, height=h, font=text_font, fg="white", bg=DGRAY, 
             selectbackground="orange", undo=True, yscrollcommand=text_scroll.set,
             wrap="none", xscrollcommand=Hori_text_scroll.set)
 my_text.pack(side=LEFT, fill="both")

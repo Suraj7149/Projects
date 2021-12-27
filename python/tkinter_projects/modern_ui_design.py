@@ -1,5 +1,5 @@
 from tkinter import *
-from ctypes import windll
+#from ctypes import windll
 
 
 
@@ -16,6 +16,7 @@ title_bar = Frame(root, bg=RGRAY, relief="raised", bd=0,highlightthickness=0)
 title_bar.pack(fill=X)
 
 maximized = False
+root.config(bg=DGRAY)
 
 def maximize(e):
     global maximized
