@@ -7,10 +7,10 @@ class AbstractEmployee{
 
 class Employee: AbstractEmployee {
 
-    /**private:
+    /*private:
         string Name;
         string Company;
-        int Age;**/
+        int Age;*/
     protected:
         string Name;
         string Company;
@@ -95,16 +95,16 @@ class Teacher:public Employee{
 
 int main(){
     /*Employee employee1 = Employee("Member1", "Company1", 25);
-    /*employee1.IntroduceYourself();
+    employee1.IntroduceYourself();
 
     Employee employee2 = Employee("Member2", "Company2", 35);
-    /*employee2.IntroduceYourself();
+    employee2.IntroduceYourself();
 
     employee1.askforpromotion();
     employee2.askforpromotion();*/
 
     Developer Dev = Developer("Excalibro", "Baro's Labours", 22 , "pascal");
-    /**Dev.ligma();
+    /*Dev.ligma();
     Dev.askforpromotion();*/
 
     Teacher redpill = Teacher("Neo", "Matrix", 35, "Virtual Reality");
